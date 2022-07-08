@@ -37,15 +37,19 @@
                 <!-- user selects the number of sets and chooses the work/rest periods-->
                 <form id="theForm">
 
-                  <div class="column justify-center">  
-                    <div>
+                  <div class="column justify-center">
+
+                    <div class="column justify-center">
                         <label for="sets"></label><h3>Sets</h3></label>
-                        <span>&minus;</span>
-                        <input type="number" id="sets" name="sets" min="1" max="999" value="3">
-                        <span>&plus;</span>
+                        <div>
+                            <span>&minus;</span>
+                            <input type="number" id="sets" name="sets" min="1" max="999" value="3">
+                            <span>&plus;</span>
+                        </div>
+                        
                     </div>
 
-                    <div>
+                    <div class="column justify-center">
                         <h3>Work</h3>
                         <fieldset>
                             <legend class="sr-only">Length of work period</legend>
@@ -59,7 +63,7 @@
                         </fieldset>
                     </div>
 
-                    <div>
+                    <div class="column justify-center">
                         <h3>Rest</h3>
                         <fieldset>
                             <legend class="sr-only">Length of rest period</legend>
