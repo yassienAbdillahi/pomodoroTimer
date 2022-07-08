@@ -52,3 +52,16 @@ input[type='number'] {
 h3 {
     font-weight: lighter;
 }
+
+.plus-minus {
+    font-size: 1.3rem;
+    margin-right: 0.5rem;
+}
+
+.zero-left-mgn {
+    margin-left: 0;
+}
+
+.bigger-rt-mgn {
+    margin-right: 3rem;
+}
