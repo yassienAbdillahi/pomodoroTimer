@@ -42,3 +42,7 @@
 fieldset {
     border: none;
 }
+
+input[type='number'] {
+    border: none;
+}
