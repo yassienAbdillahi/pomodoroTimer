@@ -34,6 +34,10 @@
     margin: 0 auto;
 }
 
+.hidden {
+    display: none;
+}
+
 .sr-only {
     position: absolute;
     left: -10000px;
