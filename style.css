@@ -9,6 +9,10 @@
     justify-content: space-between;
 }
 
+.justify-space-evenly {
+    justify-content: space-evenly;
+}
+
 .column {
     display: flex;
     flex-wrap: wrap;
@@ -85,4 +89,14 @@ h3 {
     float: right;
     margin-bottom: 0.5rem;
     font-size: 1.1rem;
+}
+
+.add-btn {
+    background: none;
+    width: 5rem;
+    border-radius: 20%/50%;
+    border-color: navy;
+    padding: 0.1rem 0.3rem;
+    color: navy;
+    font-size: 1rem;
 }
