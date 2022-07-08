@@ -1,0 +1,27 @@
+.row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.justify-space-between {
+    justify-content: space-between;
+}
+
+.column {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.center {
+    max-width: 40rem;
+    margin: 0 auto;
+}
