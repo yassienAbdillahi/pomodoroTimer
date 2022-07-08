@@ -46,6 +46,7 @@ fieldset {
 input[type='number'] {
     border: none;
     font-size: 1.3rem;
+    font-weight: 550;
 }
 
 h3 {
