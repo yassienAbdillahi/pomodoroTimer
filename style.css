@@ -65,3 +65,13 @@ h3 {
 .bigger-rt-mgn {
     margin-right: 3rem;
 }
+
+.start-btn {
+    background-color: navy;
+    color: white;
+    display: block;
+    border: none;
+    width: 100%;
+    padding: 0.5rem;
+    margin: 1rem 0;
+}
