@@ -19,7 +19,7 @@
     </head>
     <body>
         <header>
-            <h1>Be productive!</h1>
+            <h1 class="center">Be productive!</h1>
         </header>
 
         <main>
@@ -56,7 +56,7 @@
                             <span class="plus-minus">&minus;</span>
                             <label for="workMins" class="sr-only">Number of minutes in the work period</label>
                             <input type="number" id="workMins" name="sets" min="0" max="59" value="25">
-                            <span class="plus-minus zero-left-mgn">:</span>
+                            <span class="colon">:</span>
                             <label for="workSeconds" class="sr-only">Number of seconds in the work period</label>
                             <input type="number" id="workSeconds" name="sets" min="0" max="59" value="00">
                             <span class="plus-minus">&plus;</span>
@@ -70,7 +70,7 @@
                             <span class="plus-minus">&minus;</span>
                             <label for="restMins" class="sr-only">Number of minutes in the rest period</label>
                             <input type="number" id="restMins" name="sets" min="0" max="59" value="5">
-                            <span class="plus-minus zero-left-mgn">:</span>
+                            <span class="colon">:</span>
                             <label for="restSeconds" class="sr-only">Number of seconds in the rest period</label>
                             <input type="number" id="restSeconds" name="sets" min="0" max="59" value="00">
                             <span class="plus-minus">&plus;</span>
@@ -79,7 +79,7 @@
                 </div>  
 
                     <!-- save button -->
-                    <button type="button"><i class='fas fa-save' style='margin-right:0.5rem'></i>Save </button>
+                    <button type="button" class="save-btn"><i class='fas fa-save' style='margin-right:0.5rem'></i>Save </button>
 
                     <!-- start button -->
                     <button type="submit" class="start-btn"><i class='fas fa-bolt' style='margin-right:0.5rem; color:yellow'></i>Start</button>
