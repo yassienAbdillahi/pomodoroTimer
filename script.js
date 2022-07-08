@@ -37,3 +37,20 @@ function restoreQuickstartSection () {
     restoreQuickstartButton.classList.add("hidden");
 
 }
+
+//get the save and add btns
+const saveBtn = document.getElementById("save-btn");
+const addBtn = document.getElementById("add-btn");
+
+//add click event listeners to both
+saveBtn.addEventListener("click", quickSave);
+addBtn.addEventListener("click", advancedSettings);
+
+function quickSave () {
+    console.log("save btn event listener working");
+
+}
+
+function advancedSettings () {
+    console.log("add btn event listener working");
+}
