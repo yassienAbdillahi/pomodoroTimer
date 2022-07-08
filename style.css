@@ -21,6 +21,10 @@
     justify-content: center;
 }
 
+.gap-sm {
+    gap: 0.15rem;
+}
+
 .center {
     max-width: 40rem;
     margin: 0 auto;
@@ -33,4 +37,8 @@
     height: 1px;
     top: auto;
     overflow: hidden;
+}
+
+fieldset {
+    border: none;
 }
