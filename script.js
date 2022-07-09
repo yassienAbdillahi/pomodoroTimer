@@ -15,6 +15,13 @@ const addBtn = document.getElementById("add-btn");
 //the form inside quickstart section
 const form = document.getElementById("theForm");
 
+//the form inputs
+const sets = document.getElementById("sets");
+const workMinsInput = document.getElementById("workMinsInput");
+const workSecondsInput = document.getElementById("workSecondsInput");
+const restMinsInput = document.getElementById("restMinsInput");
+const restSecondsInput = document.getElementById("restSecondsInput");
+
 //the prepare screen
 const prepareScreen = document.getElementById("prepareScreen");
 
@@ -31,6 +38,7 @@ const workScreen = document.getElementById("workScreen");
 //the work screen spans
 const workMins = document.getElementById("workMins");
 const workSecs = document.getElementById("workSecs");
+const workSets = document.getElementById("workSets");
 
 //the work screen buttons
 const exitWorkScreenBtn = document.getElementById("exitWorkScreen");
@@ -203,7 +211,16 @@ function getAndShowWorkScreen () {
     //hide the preparescreen and show the work screen
     prepareScreen.classList.add("hidden");
     workScreen.classList.remove("hidden");
+
+    //get number of sets, and amount of mins+secs of work time input by user
+    let setsValue = sets.value;
+    let workMinsInputValue = workMinsInput.value;
+    let workSecondsInputValue = workSecondsInput.value;
+    console.log(`Sets = ${setsValue}, work mins input = ${workMinsInputValue}, work secs input = ${workSecondsInputValue}`);
+
 }
+
+function writeIntoWorkScreen (sets, mins, secs) {}
 
 //=============================================================================
 //                           Presets section fns
