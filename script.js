@@ -217,17 +217,66 @@ function getAndShowWorkScreen () {
     let setsValue = sets.value;
     let workMinsInputValue = workMinsInput.value;
     let workSecondsInputValue = workSecondsInput.value;
+
+    //if the user input either the workmins or worksecs with an unnecessary leading zero (eg 00:30 or 25:00), remove it
+    if(workMinsInputValue[0] == 0 && workMinsInputValue[1] == 0) {workMinsInputValue = 0;}
+    if(workSecondsInputValue[0] == 0 && workSecondsInputValue[1] == 0) {workSecondsInputValue = 0;}
+
     console.log(`Sets = ${setsValue}, work mins input = ${workMinsInputValue}, work secs input = ${workSecondsInputValue}`);
 
-    //call the writeIntoWorkScreen fn with these args
-    writeIntoWorkScreen(setsValue, workMinsInputValue, workSecondsInputValue);
+    //call the startWorkScreenCountown fn with these args
+    startWorkScreenCountdown(setsValue, workMinsInputValue, workSecondsInputValue);
 
 }
 
 function writeIntoWorkScreen (sets, mins, secs) {
-    workSets.innerHTML = sets;
-    workMins.innerHTML = mins;
-    workSecs.innerHTML = secs;
+
+    if (mins >= 10 && secs >= 10) {//i.e. if both don't need to have a 0 added to the front
+        workSets.innerHTML = sets;
+        workMins.innerHTML = mins;
+        workSecs.innerHTML = secs;
+    }
+
+    else if (mins >= 10 && secs < 10) {//i.e. if only secs needs to have a 0 added to the front
+        workSets.innerHTML = sets;
+        workMins.innerHTML = mins;
+        workSecs.innerHTML = "0" + secs;
+    }
+
+    else if (mins < 10 && secs >= 10) {//i.e. if only mins needs to have a 0 added to the front
+        workSets.innerHTML = sets;
+        workMins.innerHTML = "0" + mins;
+        workSecs.innerHTML = secs;
+    }
+
+    else if (mins < 10 && secs < 10) {//i.e. if both need to have a 0 added to the front
+        workSets.innerHTML = sets;
+        workMins.innerHTML = "0" + mins;
+        workSecs.innerHTML = "0" + secs;
+    }
+    
+}
+
+function startWorkScreenCountdown (sets, mins, secs) {
+
+    //first get the work countdown length
+    let lengthOfWorkCountdownInMs = ( (mins * 60) + secs ) * 1000;
+    console.log(lengthOfWorkCountdownInMs);
+
+    //get the current time
+    const timeWorkCountdownStarts = new Date();
+    console.log(`work countdown starts one second after ${timeWorkCountdownStarts}`);
+
+    //now calculate the time the countdown should end
+    let milliseconds = timeWorkCountdownStarts.getTime();
+    console.log(milliseconds);
+
+    let newMs = milliseconds + lengthOfWorkCountdownInMs + 1000;  //note because setInterval happens with a delay, add one extra second (1000 ms)
+    console.log(newMs);
+
+    const timeWorkCountdownEnds = new Date(newMs);
+    console.log(`work countdown finishes ${timeWorkCountdownEnds}`);
+
 }
 
 //=============================================================================
