@@ -85,7 +85,7 @@
                     <button type="button" id="save-btn" class="save-btn"><i class='fas fa-save' style='margin-right:0.5rem'></i>Save</button>
 
                     <!-- start button -->
-                    <button type="submit" class="start-btn"><i class='fas fa-bolt' style='margin-right:0.5rem; color:yellow'></i>Start</button>
+                    <button type="submit" id="start-btn" class="start-btn"><i class='fas fa-bolt' style='margin-right:0.5rem; color:yellow'></i>Start</button>
                 </form>
             </section>
 
@@ -99,6 +99,20 @@
                 <p>To create your first preset, use the SAVE button to quick save.
                     <br><br>For advanced settings, use the ADD button.
                 </p>
+            </section>
+
+            <!-- prepare screen -->
+            <section id="prepareScreen" class="hidden">
+                <button type="button" id="exitPrepareScreen">Click to exit</button>
+                <h2 id="prepareH2">PREPARE</h2>
+                <p id="prepareCountdownText">
+                    <span id="prepMins"></span>
+                    <span id="prepColon">:</span>
+                    <span id="prepSecs"></span>
+                </p>
+                
+                <!-- pause exit screen button goes here -->
+
             </section>
         </main>
 
