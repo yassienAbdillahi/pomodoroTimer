@@ -25,6 +25,16 @@ const prepSecs = document.getElementById("prepSecs");
 //the prepare screen buttons
 const exitPrepareScreenBtn = document.getElementById("exitPrepareScreen");
 
+//the work screen
+const workScreen = document.getElementById("workScreen");
+
+//the work screen spans
+const workMins = document.getElementById("workMins");
+const workSecs = document.getElementById("workSecs");
+
+//the work screen buttons
+const exitWorkScreenBtn = document.getElementById("exitWorkScreen");
+
 
 //=============================================================================
 //                             Event listeners
@@ -166,21 +176,33 @@ function startPrepareScreenCountDown (mins, secs) {
            }
     
        }
+
        else {//what to do at the end of the timer
            console.log(`Time has reached ${new Date()}, prep countdown is finished`);
            writeIntoPrepareScreen(0, 0);
+
+           //now replace prep screen with the work screen
+           getAndShowWorkScreen();
+
+           //clear the set interval
            clearInterval(x);
        }
         
-       
-
     }, 1000);
+
+    
 
 }
 
 function exitPrepareScreen () {
     //reload the page
     location.reload();
+}
+
+function getAndShowWorkScreen () {
+    //hide the preparescreen and show the work screen
+    prepareScreen.classList.add("hidden");
+    workScreen.classList.remove("hidden");
 }
 
 //=============================================================================
