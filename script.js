@@ -22,6 +22,9 @@ const prepareScreen = document.getElementById("prepareScreen");
 const prepMins = document.getElementById("prepMins");
 const prepSecs = document.getElementById("prepSecs");
 
+//the prepare screen buttons
+const exitPrepareScreenBtn = document.getElementById("exitPrepareScreen");
+
 
 //=============================================================================
 //                             Event listeners
@@ -38,6 +41,9 @@ addBtn.addEventListener("click", advancedSettings);
 
 //submit event listener on theForm
 form.addEventListener("submit", quickStart)
+
+//click event listener on exit prep screen btn
+exitPrepareScreenBtn.addEventListener("click", exitPrepareScreen)
 
 //=============================================================================
 //                          Quickstart section fns
@@ -170,6 +176,11 @@ function startPrepareScreenCountDown (mins, secs) {
 
     }, 1000);
 
+}
+
+function exitPrepareScreen () {
+    //reload the page
+    location.reload();
 }
 
 //=============================================================================
