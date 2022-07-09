@@ -36,9 +36,10 @@ const exitPrepareScreenBtn = document.getElementById("exitPrepareScreen");
 const workScreen = document.getElementById("workScreen");
 
 //the work screen spans
+const workSets = document.getElementById("workSets");
 const workMins = document.getElementById("workMins");
 const workSecs = document.getElementById("workSecs");
-const workSets = document.getElementById("workSets");
+
 
 //the work screen buttons
 const exitWorkScreenBtn = document.getElementById("exitWorkScreen");
@@ -218,9 +219,16 @@ function getAndShowWorkScreen () {
     let workSecondsInputValue = workSecondsInput.value;
     console.log(`Sets = ${setsValue}, work mins input = ${workMinsInputValue}, work secs input = ${workSecondsInputValue}`);
 
+    //call the writeIntoWorkScreen fn with these args
+    writeIntoWorkScreen(setsValue, workMinsInputValue, workSecondsInputValue);
+
 }
 
-function writeIntoWorkScreen (sets, mins, secs) {}
+function writeIntoWorkScreen (sets, mins, secs) {
+    workSets.innerHTML = sets;
+    workMins.innerHTML = mins;
+    workSecs.innerHTML = secs;
+}
 
 //=============================================================================
 //                           Presets section fns

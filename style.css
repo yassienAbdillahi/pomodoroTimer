@@ -157,8 +157,8 @@ h3 {
     background-color: rgb(10, 230, 10); 
 }
 
-.container-just-to-center-two {
-    position: absolute;
-    top: 40vh;
-    left: 40vw;
+#workCountdownText span {
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 4rem;
 }
