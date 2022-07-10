@@ -465,14 +465,31 @@ function startRestScreenCountdown (sets, mins, secs) {
             clearInterval(x);
 
             //change the value of the sets input in the html
-            //sets.value--;
-            document.querySelector("input[type='number']").value = sets - 1;
-            
-            //now change the isFirstSet boolean
-            isFirstSet = false;
+            /*note: can't just use sets.value here instead of selecting it by input type number
+            since sets is the name of the global variable AND the argument passed into the fn*/
+            let userSets =document.querySelector("input[type='number']")
+            userSets.value = sets - 1;
 
-            //now submit theForm again
-            startBtn.click();
+
+            //if condition to handle case where sets reaches 0 (i.e at the end of the final rest countdown)
+            if(userSets.value == 0) {
+                //hide the prepare, work and rest screens
+                prepareScreen.classList.add("hidden");
+                restScreen.classList.add("hidden");
+                workScreen.classList.add("hidden");
+                //show the finished screen
+                alert(`finished`);
+            }
+
+            else {
+                //now change the isFirstSet boolean
+                isFirstSet = false;
+                
+                //now submit theForm again
+                startBtn.click();
+            }
+            
+            
         }
     
     }, 1000);
