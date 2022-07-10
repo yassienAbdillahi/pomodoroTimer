@@ -84,6 +84,9 @@ form.addEventListener("submit", quickStart)
 //click event listener on exit prep screen btn
 exitPrepareScreenBtn.addEventListener("click", exitPrepareScreen)
 
+//click event listener on refresh the page btn
+refreshPageBtn.addEventListener("click", refreshPage)
+
 //=============================================================================
 //                          Quickstart section fns
 //=============================================================================
@@ -504,6 +507,11 @@ function startRestScreenCountdown (sets, mins, secs) {
     }, 1000);
 
 
+}
+
+
+function refreshPage () {
+    location.reload();
 }
 
 
