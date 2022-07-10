@@ -40,9 +40,19 @@ const workSets = document.getElementById("workSets");
 const workMins = document.getElementById("workMins");
 const workSecs = document.getElementById("workSecs");
 
-
 //the work screen buttons
 const exitWorkScreenBtn = document.getElementById("exitWorkScreen");
+
+//the rest screen
+const restScreen = document.getElementById("restScreen");
+
+//the work screen spans
+const restkSets = document.getElementById("restSets");
+const restMins = document.getElementById("restMins");
+const restSecs = document.getElementById("restSecs");
+
+//the work screen buttons
+const exitRestScreenBtn = document.getElementById("exitRestScreen");
 
 
 //=============================================================================
