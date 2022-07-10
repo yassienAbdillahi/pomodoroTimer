@@ -193,7 +193,7 @@ function startPrepareScreenCountDown (mins, secs) {
            //now replace prep screen with the work screen
            getAndShowWorkScreen();
 
-           //clear the set interval
+           //clear the setInterval
            clearInterval(x);
        }
         
@@ -214,14 +214,10 @@ function getAndShowWorkScreen () {
     workScreen.classList.remove("hidden");
 
     //get number of sets, and amount of mins+secs of work time input by user
-    let setsValue = sets.value;
-    let workMinsInputValue = workMinsInput.value;
-    let workSecondsInputValue = workSecondsInput.value;
-
-    //if the user input either the workmins or worksecs with an unnecessary leading zero (eg 00:30 or 25:00), remove it
-    if(workMinsInputValue[0] == 0 && workMinsInputValue[1] == 0) {workMinsInputValue = 0;}
-    if(workSecondsInputValue[0] == 0 && workSecondsInputValue[1] == 0) {workSecondsInputValue = 0;}
-
+    let setsValue = parseFloat(sets.value);
+    let workMinsInputValue = parseFloat(workMinsInput.value);
+    let workSecondsInputValue = parseFloat(workSecondsInput.value);
+        
     console.log(`Sets = ${setsValue}, work mins input = ${workMinsInputValue}, work secs input = ${workSecondsInputValue}`);
 
     //call the startWorkScreenCountown fn with these args
@@ -277,6 +273,61 @@ function startWorkScreenCountdown (sets, mins, secs) {
     const timeWorkCountdownEnds = new Date(newMs);
     console.log(`work countdown finishes ${timeWorkCountdownEnds}`);
 
+
+
+    const x = setInterval( () => {//i.e every second, do the following
+      
+        //while the currentTime < timeCountdownEnds, keep changing the relevant innerHTML
+        let currentTimeInMs = new Date().getTime();
+ 
+        if (currentTimeInMs < newMs) {
+            console.log(`Work time not over yet, time is still ${new Date()}`);
+            console.log(secs);
+ 
+            if(mins == 0) {/*the simplest case i.e if prep time is less than a min, just decrement the secs arg and write into the html*/
+                writeIntoWorkScreen(sets, mins, secs);
+                secs--;
+            }
+            else {//i.e how to handle longer prep times eg 2mins30secs
+ 
+              if(secs >= 0 && mins >= 0) {
+                  //first just do the same as before
+                  writeIntoWorkScreen(sets, mins, secs);
+                  secs--;
+ 
+                  //but then when the secs reaches -1, reset it to 59 and now decrement the mins
+                  if (secs == -1) {
+                     secs = 59;
+                     mins--;
+                  }
+ 
+              }
+                     
+            }
+     
+        }
+ 
+        else {//what to do at the end of the timer
+            console.log(`Time has reached ${new Date()}, work countdown is finished`);
+            writeIntoWorkScreen(sets, 0, 0);
+ 
+            //clear the setInterval
+            clearInterval(x);
+
+            //now replace work screen with the rest screen
+            getAndShowWRestScreen();
+        }
+         
+     }, 1000);
+
+
+
+
+}
+
+function getAndShowWRestScreen() {
+
+    console.log(`show rest screen now`);
 }
 
 //=============================================================================
