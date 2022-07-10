@@ -46,12 +46,12 @@ const exitWorkScreenBtn = document.getElementById("exitWorkScreen");
 //the rest screen
 const restScreen = document.getElementById("restScreen");
 
-//the work screen spans
-const restkSets = document.getElementById("restSets");
+//the rest screen spans
+const restSets = document.getElementById("restSets");
 const restMins = document.getElementById("restMins");
 const restSecs = document.getElementById("restSecs");
 
-//the work screen buttons
+//the rest screen buttons
 const exitRestScreenBtn = document.getElementById("exitRestScreen");
 
 
@@ -219,8 +219,9 @@ function exitPrepareScreen () {
 }
 
 function getAndShowWorkScreen () {
-    //hide the preparescreen and show the work screen
+    //hide the prepare and rest screens then show the work screen
     prepareScreen.classList.add("hidden");
+    restScreen.classList.add("hidden");
     workScreen.classList.remove("hidden");
 
     //get number of sets, and amount of mins+secs of work time input by user
@@ -338,7 +339,133 @@ function startWorkScreenCountdown (sets, mins, secs) {
 function getAndShowWRestScreen() {
 
     console.log(`show rest screen now`);
+
+    //hide the work screen and show the rest screen
+    workScreen.classList.add("hidden");
+    restScreen.classList.remove("hidden");
+
+    //get number of sets, and amount of mins+secs of work time input by user
+    let setsValue = parseFloat(sets.value);
+    let restMinsInputValue = parseFloat(restMinsInput.value);
+    let restSecondsInputValue = parseFloat(restSecondsInput.value);
+        
+    console.log(`Sets = ${setsValue}, rest mins input = ${restMinsInputValue}, rest secs input = ${restSecondsInputValue}`);
+
+    //call the startWorkScreenCountown fn with these args
+    startRestScreenCountdown(setsValue, restMinsInputValue, restSecondsInputValue);
+
+
 }
+
+
+function writeIntoRestScreen (sets, mins, secs) {
+
+    if (mins >= 10 && secs >= 10) {//i.e. if both don't need to have a 0 added to the front
+        restSets.innerHTML = sets;
+        restMins.innerHTML = mins;
+        restSecs.innerHTML = secs;
+    }
+
+    else if (mins >= 10 && secs < 10) {//i.e. if only secs needs to have a 0 added to the front
+        restSets.innerHTML = sets;
+        restMins.innerHTML = mins;
+        restSecs.innerHTML = "0" + secs;
+    }
+
+    else if (mins < 10 && secs >= 10) {//i.e. if only mins needs to have a 0 added to the front
+        restSets.innerHTML = sets;
+        restMins.innerHTML = "0" + mins;
+        restSecs.innerHTML = secs;
+    }
+
+    else if (mins < 10 && secs < 10) {//i.e. if both need to have a 0 added to the front
+        restSets.innerHTML = sets;
+        restMins.innerHTML = "0" + mins;
+        restSecs.innerHTML = "0" + secs;
+    }
+    
+}
+
+
+function startRestScreenCountdown (sets, mins, secs) {
+    
+    //first get the rest countdown length
+    let lengthOfRestCountdownInMs = ( (mins * 60) + secs ) * 1000;
+    console.log(lengthOfRestCountdownInMs);
+    
+    //get the current time
+    const timeRestCountdownStarts = new Date();
+    console.log(`rest countdown starts one second after ${timeRestCountdownStarts}`);
+
+
+    //now calculate the time the countdown should end
+    let milliseconds = timeRestCountdownStarts.getTime();
+    console.log(milliseconds);
+
+
+    let newMs = milliseconds + lengthOfRestCountdownInMs + 1000;  //note because setInterval happens with a delay, add one extra second (1000 ms)
+    console.log(newMs);
+
+    const timeRestCountdownEnds = new Date(newMs);
+    console.log(`work countdown finishes ${timeRestCountdownEnds}`);
+    
+    
+    const x = setInterval( () => {//i.e every second, do the following
+  
+    
+        //while the currentTime < timeCountdownEnds, keep changing the relevant innerHTML
+        let currentTimeInMs = new Date().getTime();
+
+    
+        if (currentTimeInMs < newMs) {
+
+            console.log(`Rest time not over yet, time is still ${new Date()}`);
+            console.log(secs);
+
+        
+            if(mins == 0) {/*the simplest case i.e if prep time is less than a min, just decrement the secs arg and write into the html*/
+                writeIntoRestScreen(sets, mins, secs);
+                secs--;
+            }
+        
+            else {//i.e how to handle longer prep times eg 2mins30secs
+                
+                if(secs >= 0 && mins >= 0) {
+              
+                    //first just do the same as before
+                    writeIntoRestScreen(sets, mins, secs);
+                    secs--;
+
+              
+                    //but then when the secs reaches -1, reset it to 59 and now decrement the mins
+              
+                    if (secs == -1) {
+                        secs = 59;
+                        mins--;
+                    }
+                }
+            }
+        }
+        
+        else {//what to do at the end of the timer
+            console.log(`Time has reached ${new Date()}, rest countdown is finished`);
+            writeIntoRestScreen(sets, 0, 0);
+            
+            //clear the setInterval
+            clearInterval(x);
+
+            //change the value of the sets input in the html
+           // sets.value = sets - 1;
+            
+            //now replace rest screen with the work screen
+           // getAndShowWorkScreen();
+        }
+    
+    }, 1000);
+
+
+}
+
 
 //=============================================================================
 //                           Presets section fns
