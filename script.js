@@ -54,6 +54,13 @@ const restSecs = document.getElementById("restSecs");
 //the rest screen buttons
 const exitRestScreenBtn = document.getElementById("exitRestScreen");
 
+//the finishedScreen
+const finishedScreen = document.getElementById("finishedScreen");
+
+//the finished screen span-buttons
+const restartSameBtn = document.getElementById("restartSame");
+const refreshPageBtn = document.getElementById("refreshPage");
+
 //boolean to determine if prepare screen should be shown
 let isFirstSet = true;
 
@@ -477,8 +484,10 @@ function startRestScreenCountdown (sets, mins, secs) {
                 prepareScreen.classList.add("hidden");
                 restScreen.classList.add("hidden");
                 workScreen.classList.add("hidden");
+                
                 //show the finished screen
                 alert(`finished`);
+                finishedScreen.classList.remove("hidden");
             }
 
             else {
