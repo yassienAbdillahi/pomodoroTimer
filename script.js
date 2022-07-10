@@ -54,6 +54,9 @@ const restSecs = document.getElementById("restSecs");
 //the rest screen buttons
 const exitRestScreenBtn = document.getElementById("exitRestScreen");
 
+//boolean to determine if prepare screen should be shown
+let isFirstSet = true;
+
 
 //=============================================================================
 //                             Event listeners
@@ -109,14 +112,21 @@ function quickStart (event) {
     event.preventDefault();
     console.log("start btn event listener working");
 
-    //write into the prepare screen
-    writeIntoPrepareScreen(0, 5);
+    if(isFirstSet == true) {
+        //write into the prepare screen
+        writeIntoPrepareScreen(0, 5);
+        
+        //display the preparescreen
+        prepareScreen.classList.remove("hidden");
+        
+        //start the 5-second countdown
+        startPrepareScreenCountDown(0, 5);
+    }
 
-    //display the preparescreen
-    prepareScreen.classList.remove("hidden");
-
-    //start the 5-second countdown
-    startPrepareScreenCountDown(0, 5);
+    else{
+        //replace rest screen with the work screen
+        getAndShowWorkScreen();
+    }
 
 }
 
@@ -455,10 +465,14 @@ function startRestScreenCountdown (sets, mins, secs) {
             clearInterval(x);
 
             //change the value of the sets input in the html
-           // sets.value = sets - 1;
+            //sets.value--;
+            document.querySelector("input[type='number']").value = sets - 1;
             
-            //now replace rest screen with the work screen
-           // getAndShowWorkScreen();
+            //now change the isFirstSet boolean
+            isFirstSet = false;
+
+            //now submit theForm again
+            startBtn.click();
         }
     
     }, 1000);
