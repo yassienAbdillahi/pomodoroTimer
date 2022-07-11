@@ -38,6 +38,10 @@
     margin: 0 auto;
 }
 
+.stack-md > * + * {
+    margin-top: 1rem;
+}
+
 .hidden {
     display: none;
 }
@@ -201,11 +205,17 @@ h3 {
     left: 5%;
     top: 33%;
     width: 90%; /* Nearly full width */
-    height: 33%; /* A third of the page's height */
+    height: 25%; /* A quarter of the page's height */
     overflow: auto; /* Enable scroll if needed */
     background-color: white; 
 }
 
 .grey-background {
     background-color: gray;
+}
+
+#theForm2 button {
+    background: none;
+    border: none;
+    font-size: 1rem;
 }
