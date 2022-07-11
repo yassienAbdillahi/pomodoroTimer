@@ -85,20 +85,68 @@
                     <button type="button" id="save-btn" class="save-btn"><i class='fas fa-save' style='margin-right:0.5rem'></i>Save</button>
 
                     <!-- start button -->
-                    <button type="submit" id="start-btn" class="start-btn"><i class='fas fa-bolt' style='margin-right:0.5rem; color:yellow'></i>Start</button>
+                    <button type="submit" id="start-btn" class="start-btn zero-bottom-margin"><i class='fas fa-bolt' style='margin-right:0.5rem; color:yellow'></i>Start</button>
                 </form>
             </section>
 
             <!-- presets go here i.e where user saves custom "work" and "break" lengths -->
-            <section id="presets">
-                <div class="row justify-space-evenly">
+            <section id="presets" class="light-grey-background stack-sm">
+                <div id="presetsHeaderContainer" class="row justify-space-evenly">
                     <h2>NO PRESETS YET</h2>
                     <button type="button" id="add-btn" class="add-btn"><span style="font-size: 1.3rem;">&plus; </span>Add</button>
                 </div>
                 
-                <p>To create your first preset, use the SAVE button to quick save.
+                <p id="presetsParagraph">To create your first preset, use the SAVE button to quick save.
                     <br><br>For advanced settings, use the ADD button.
                 </p>
+
+                <div id="actualSavedPresets">
+
+                <!-- sample of what saved preset should look like -->
+                <div id="xSavedPreset" class="stack-md white-background">
+
+                    <div class="row justify-space-between">
+                        <h3 id="xSavedPresetName" class="sm-mgn-lft-and-rt medium-text">x</h3>
+                        <p id="xSavedPresetTotalTime" class="sm-mgn-lft-and-rt">02:00</p>
+                    </div>
+
+                    
+                    <span class="sm-mgn-lft-and-rt">SETS</span><span id="xSavedPresetTotalSets">6x</span><br>
+                    <span class="sm-mgn-lft-and-rt">WORK</span><span id="xSavedPresetWorkTime">00:15</span><br>
+                    <span class="sm-mgn-lft-and-rt">REST</span><span id="xSavedPresetRestTime">00:05</span><br>
+                    
+
+                    <div class="row justify-space-evenly">
+                        <button type="button" class="preset-edit-btn"><i class='fas fa-pen' style='margin-right:0.5rem'></i>Edit</button>
+                        <button type="button" class="preset-delete-btn"><i class='fas fa-trash-alt' style='margin-right:0.5rem'></i>Delete</button>
+                        <button type="button" class="preset-start-btn"><i class='fas fa-play' style='margin-right:0.5rem'></i>START</button>
+                    </div>
+
+                </div>
+
+                <div id="ySavedPreset" class="stack-md white-background">
+
+                    <div class="row justify-space-between">
+                        <h3 id="ySavedPresetName" class="sm-mgn-lft-and-rt medium-text">y</h3>
+                        <p id="ySavedPresetTotalTime" class="sm-mgn-lft-and-rt">02:00</p>
+                    </div>
+
+                    
+                    <span class="sm-mgn-lft-and-rt">SETS</span><span id="ySavedPresetTotalSets">6x</span><br>
+                    <span class="sm-mgn-lft-and-rt">WORK</span><span id="ySavedPresetWorkTime">00:15</span><br>
+                    <span class="sm-mgn-lft-and-rt">REST</span><span id="ySavedPresetRestTime">00:05</span><br>
+                    
+
+                    <div class="row justify-space-evenly">
+                        <button type="button" class="preset-edit-btn"><i class='fas fa-pen' style='margin-right:0.5rem'></i>Edit</button>
+                        <button type="button" class="preset-delete-btn"><i class='fas fa-trash-alt' style='margin-right:0.5rem'></i>Delete</button>
+                        <button type="button" class="preset-start-btn"><i class='fas fa-play' style='margin-right:0.5rem'></i>START</button>
+                    </div>
+
+                </div>
+
+              </div>
+
             </section>
 
             <!-- prepare screen -->
@@ -201,6 +249,7 @@
 
             <!-- save preset modal -->
             <section id="savePresetModal" class="hidden save-screen">
+              
                 <h2 class="sm-mgn-lft-and-rt">Save Preset</h2>
                 <form id="theForm2" class="stack-md">
 
@@ -213,6 +262,7 @@
                         <button type="submit" id="submitSave" class="sm-mgn-lft-and-rt">SAVE</button>
                     </div>
                 </form>
+               
             </section>
 
 

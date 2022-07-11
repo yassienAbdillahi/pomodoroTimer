@@ -18,6 +18,7 @@ const addBtn = document.getElementById("add-btn");
 const form = document.getElementById("theForm");
 
 //the form inputs
+const allTheFormInputs = document.querySelectorAll("#theForm input[type='number']");
 const sets = document.getElementById("sets");
 const workMinsInput = document.getElementById("workMinsInput");
 const workSecondsInput = document.getElementById("workSecondsInput");
@@ -66,12 +67,23 @@ const refreshPageBtn = document.getElementById("refreshPage");
 //boolean to determine if prepare screen should be shown
 let isFirstSet = true;
 
-//the save preset screen
+//the save preset screen (modal)
 const savePresetScreen = document.getElementById("savePresetModal");
 
 //the cancelSave btn
 const cancelSaveBtn = document.getElementById("cancelSave");
 
+//the presets section
+const presets = document.getElementById("presets");
+
+//the header div in the presets section (non-modal i.e once they've BEEN saved)
+const presetsHeaderContainer = document.getElementById("presetsHeaderContainer");
+
+//the instructions paragraph in the presets section
+const presetsParagraph = document.getElementById("presetsParagraph");
+
+//the actual presets
+const actualSavedPresets = document.getElementById("actualSavedPresets");
 
 //=============================================================================
 //                             Event listeners
@@ -126,10 +138,20 @@ function restoreQuickstartSection () {
 
 function quickSave () {
     console.log("save btn event listener working");
+
+    //show the save presets screen modal
     savePresetScreen.classList.remove("hidden");
 
     //make the rest of the page kinda fade to the background so the save presets screen stands out more
     pageBody.classList.add("grey-background");
+
+    //give the inputs in theForm a grey background too
+    for (let i = 0; i < allTheFormInputs.length; i++) {
+        allTheFormInputs[i].classList.add("grey-background");
+      }
+
+    //make pageBody unscrollable so the white background of the save presets modal doesnt clash with the actually already saved presets
+    pageBody.classList.add("stop-scrolling");
 
     //make theForm (and consequently the start and save buttons) unclickable while the presets screen is showing
     form.classList.add("unclickable");

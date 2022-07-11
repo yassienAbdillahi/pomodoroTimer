@@ -42,6 +42,10 @@
     margin-top: 1rem;
 }
 
+.stack-sm > * + * {
+    margin-top: 0.5rem;
+}
+
 .hidden {
     display: none;
 }
@@ -132,8 +136,17 @@ h3 {
 
 .sm-mgn-lft-and-rt {
     margin-left: 0.5rem;
-    margin-right: 0.5rem;
+    margin-right: 0.6rem;
 }
+
+.zero-top-margin {
+    margin-top: 0;
+}
+
+.zero-bottom-margin {
+    margin-bottom: 0;
+}
+
 
 .container-just-to-center {
     position: absolute;
@@ -143,6 +156,10 @@ h3 {
 
 .big-text {
     font-size: 2rem;
+}
+
+.medium-text {
+    font-size: 1.5rem;
 }
 
 .hold-to-exit {
@@ -214,6 +231,14 @@ h3 {
     background-color: gray;
 }
 
+.light-grey-background {
+    background-color: rgb(232, 226, 226);
+}
+
+.white-background {
+    background-color: white;
+}
+
 #theForm2 button {
     background: none;
     border: none;
@@ -222,4 +247,14 @@ h3 {
 
 .unclickable {
     pointer-events: none;
+}
+
+.preset-start-btn, .preset-edit-btn, .preset-delete-btn {
+    background: none;
+    border: none;
+}
+
+.stop-scrolling {
+    height: 100%;
+    overflow: hidden;
 }
