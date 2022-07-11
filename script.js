@@ -125,6 +125,12 @@ function quickSave () {
     //make the rest of the page kinda fade to the background so the save presets screen stands out more
     pageBody.classList.add("grey-background");
 
+    //make theForm (and consequently the start and save buttons) unclickable while the presets screen is showing
+    form.classList.add("unclickable");
+
+    //do the same for the add btn
+    addBtn.classList.add("unclickable");
+
 }
 
 function quickStart (event) {
