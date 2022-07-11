@@ -69,6 +69,9 @@ let isFirstSet = true;
 //the save preset screen
 const savePresetScreen = document.getElementById("savePresetModal");
 
+//the cancelSave btn
+const cancelSaveBtn = document.getElementById("cancelSave");
+
 
 //=============================================================================
 //                             Event listeners
@@ -91,6 +94,9 @@ exitPrepareScreenBtn.addEventListener("click", exitPrepareScreen)
 
 //click event listener on refresh the page btn
 refreshPageBtn.addEventListener("click", refreshPage)
+
+//click event listener on the cancelSave btn
+cancelSaveBtn.addEventListener("click", refreshPage)
 
 //=============================================================================
 //                          Quickstart section fns
