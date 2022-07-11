@@ -25,6 +25,10 @@
     justify-content: center;
 }
 
+.flex-justify-end {
+    justify-content: flex-end;
+}
+
 .gap-sm {
     gap: 0.15rem;
 }
@@ -47,7 +51,7 @@
     overflow: hidden;
 }
 
-fieldset {
+#theForm fieldset {
     border: none;
 }
 
@@ -189,4 +193,19 @@ h3 {
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(214, 39, 39); 
+}
+
+.save-screen {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 5%;
+    top: 33%;
+    width: 90%; /* Nearly full width */
+    height: 33%; /* A third of the page's height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: white; 
+}
+
+.grey-background {
+    background-color: gray;
 }

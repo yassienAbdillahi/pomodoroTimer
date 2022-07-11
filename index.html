@@ -17,7 +17,7 @@
         <!-- Link to stylesheet -->
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
-    <body>
+    <body id="pageBody">
         <header>
             <h1 class="center">Be productive!</h1>
         </header>
@@ -197,6 +197,22 @@
                   
                 <!-- pause button goes here -->
   
+            </section>
+
+            <!-- save preset modal -->
+            <section id="savePresetModal" class="hidden save-screen">
+                <h2>Save Preset</h2>
+                <form id="theForm2">
+
+                    <label for="presetName">Preset Name:</label><br>
+                    <input type="text" id="presetName" placeholder="eg 3 x 45/15">
+                   
+
+                    <div class="row flex-justify-end">
+                        <button type="button" id="cancelSave">CANCEL</button>
+                        <button type="submit" id="submitSave">SAVE</button>
+                    </div>
+                </form>
             </section>
 
 

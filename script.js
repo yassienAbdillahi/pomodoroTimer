@@ -2,6 +2,8 @@
 //                             Global variables
 //=============================================================================
 
+//the page body itself
+const pageBody = document.getElementById("pageBody");
 
 //the minimise and restore btns
 const minimseQuickstartButton = document.getElementById("minimseQuickstartButton");
@@ -64,6 +66,9 @@ const refreshPageBtn = document.getElementById("refreshPage");
 //boolean to determine if prepare screen should be shown
 let isFirstSet = true;
 
+//the save preset screen
+const savePresetScreen = document.getElementById("savePresetModal");
+
 
 //=============================================================================
 //                             Event listeners
@@ -115,6 +120,10 @@ function restoreQuickstartSection () {
 
 function quickSave () {
     console.log("save btn event listener working");
+    savePresetScreen.classList.remove("hidden");
+
+    //make the rest of the page kinda fade to the background so the save presets screen stands out more
+    pageBody.classList.add("grey-background");
 
 }
 
