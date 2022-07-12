@@ -70,8 +70,17 @@ let isFirstSet = true;
 //the save preset screen (modal)
 const savePresetScreen = document.getElementById("savePresetModal");
 
+//theForm2
+const form2 = document.getElementById("theForm2");
+
 //the cancelSave btn
 const cancelSaveBtn = document.getElementById("cancelSave");
+
+//the submitSave btn
+const submitSaveBtn = document.getElementById("submitSave");
+
+//the presetName Input
+const presetName = document.getElementById("presetName");
 
 //the presets section
 const presets = document.getElementById("presets");
@@ -109,6 +118,9 @@ refreshPageBtn.addEventListener("click", refreshPage)
 
 //click event listener on the cancelSave btn
 cancelSaveBtn.addEventListener("click", refreshPage)
+
+//submit event listener on theForm2
+form2.addEventListener("submit", handleSave);
 
 //=============================================================================
 //                          Quickstart section fns
@@ -148,18 +160,115 @@ function quickSave () {
     //give the inputs in theForm a grey background too
     for (let i = 0; i < allTheFormInputs.length; i++) {
         allTheFormInputs[i].classList.add("grey-background");
-      }
+    }
 
     //make pageBody unscrollable so the white background of the save presets modal doesnt clash with the actually already saved presets
     pageBody.classList.add("stop-scrolling");
 
-    //make theForm (and consequently the start and save buttons) unclickable while the presets screen is showing
+    //make theForm (and consequently the start and save buttons as well as the number inputs) unclickable while the presets screen is showing
     form.classList.add("unclickable");
 
     //do the same for the add btn
     addBtn.classList.add("unclickable");
 
+
 }
+
+function handleSave (event) {
+
+    event.preventDefault();
+
+    //call the insertNewSavedPreset fn to write into the html using the relevant inputs
+    insertNewSavedPreset(presetName.value, sets.value, workMinsInput.value, workSecondsInput.value, restMinsInput.value, restSecondsInput.value);
+
+    //call the savePresetToLocalStorage fn to actually save the relevant inputs to local storage
+    savePresetToLocalStorage (presetName.value, sets.value, workMinsInput.value, workSecondsInput.value, restMinsInput.value, restSecondsInput.value);
+
+    //then hide the save presets screen modal again
+    savePresetScreen.classList.add("hidden");
+
+    //remove the grey background from the page
+    pageBody.classList.remove("grey-background");
+
+    //remove the grey background from the inputs in theForm as well
+    for (let i = 0; i < allTheFormInputs.length; i++) {
+        allTheFormInputs[i].classList.remove("grey-background");
+    }
+
+    //make pageBody scrollable again
+    pageBody.classList.remove("stop-scrolling");
+
+    //make theForm (and consequently the start and save buttons as well as the number inputs) clickable again
+    form.classList.remove("unclickable");
+
+    //do the same for the add btn
+    addBtn.classList.remove("unclickable");
+
+
+}
+
+function savePresetToLocalStorage (presetNameToSave, setsToSave, workMinsToSave, workSecsToSave, restMinsToSave, restSecsToSave) {
+
+}
+
+function insertNewSavedPreset (presetNameToSave, setsToSave, workMinsToSave, workSecsToSave, restMinsToSave, restSecsToSave) {
+
+    console.log(`The submit save button passed in these args: 
+    - this name: ${presetNameToSave} 
+    - this many sets: ${setsToSave} 
+    - this many mins of work: ${workMinsToSave} 
+    - this many secs of work: ${workSecsToSave}
+    - this many mins of rest: ${restMinsToSave}
+    - this many secs of rest: ${restSecsToSave}`);
+
+    //because the user might pass in values with a leading 0 (eg 05 mins and 03 secs instead of just 5mins3secs), I need to transform the args 
+    let transformedSets = parseInt(setsToSave, 10);
+    let transformedworkMins = parseInt(workMinsToSave, 10);
+    let transformedworkSecs = parseInt(workSecsToSave, 10);
+    let transformedrestMins = parseInt(restMinsToSave, 10);
+    let transformedrestSecs = parseInt(restSecsToSave, 10);
+
+    //calculate total time i.e default prepare time (5 secs) + no.ofsets*work time per set + (no of sets -1)*rest time per set [-1 since there is no rest period on the final set]
+    let workTimePerSetInSeconds = (transformedworkMins * 60) + transformedworkSecs;
+    let restTimePerSetInSeconds = (transformedrestMins * 60) + transformedrestSecs;
+    let totalTimeInSeconds = 5 + (transformedSets *  workTimePerSetInSeconds) + ( (transformedSets -1) * restTimePerSetInSeconds ) ;
+
+    //now convert that into mins and secs using the remainder/modulus
+    let totalTimeSecsRemainder = totalTimeInSeconds % 60;
+    let totalTimeMinsQuotient = (totalTimeInSeconds - totalTimeSecsRemainder) / 60;
+
+    //now the template html, customisable using backtics and interpolation
+    let htmlToInsert = `<div id="${presetNameToSave}SavedPreset" class="stack-md white-background">
+
+    <div class="row justify-space-between">
+        <h3 id="${presetNameToSave}SavedPresetName" class="sm-mgn-lft-and-rt medium-text">${presetNameToSave}</h3>
+        <p id="${presetNameToSave}SavedPresetTotalTime" class="sm-mgn-lft-and-rt">${totalTimeMinsQuotient}:${totalTimeSecsRemainder}</p>
+    </div>
+
+    
+    <span class="sm-mgn-lft-and-rt">SETS</span><span id="${presetNameToSave}SavedPresetTotalSets">${transformedSets}x</span><br>
+    <span class="sm-mgn-lft-and-rt">WORK</span><span id="${presetNameToSave}SavedPresetWorkTime">${transformedworkMins}:${transformedworkSecs}</span><br>
+    <span class="sm-mgn-lft-and-rt">REST</span><span id="${presetNameToSave}SavedPresetRestTime">${transformedrestMins}:${transformedrestSecs}</span><br>
+    
+
+    <div class="row justify-space-evenly">
+        <button type="button" class="preset-edit-btn"><i class='fas fa-pen' style='margin-right:0.5rem'></i>Edit</button>
+        <button type="button" class="preset-delete-btn"><i class='fas fa-trash-alt' style='margin-right:0.5rem'></i>Delete</button>
+        <button type="button" class="preset-start-btn"><i class='fas fa-play' style='margin-right:0.5rem'></i>START</button>
+    </div>
+
+</div>`;
+
+
+    //now insert the html in the right position
+    presetsParagraph.insertAdjacentHTML("afterend", htmlToInsert);
+
+    
+
+
+
+}
+
 
 function quickStart (event) {
     event.preventDefault();
