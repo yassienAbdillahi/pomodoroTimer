@@ -25,6 +25,10 @@ const workSecondsInput = document.getElementById("workSecondsInput");
 const restMinsInput = document.getElementById("restMinsInput");
 const restSecondsInput = document.getElementById("restSecondsInput");
 
+//the plus and minus buttons inside the quickstart section
+const decrementSets = document.getElementById("decrementSets");
+const incrementSets = document.getElementById("incrementSets");
+
 //the prepare screen
 const prepareScreen = document.getElementById("prepareScreen");
 
@@ -106,6 +110,10 @@ restoreQuickstartButton.addEventListener("click", restoreQuickstartSection);
 //click event listeners on the save and add btns
 saveBtn.addEventListener("click", quickSave);
 addBtn.addEventListener("click", advancedSettings);
+
+//click event listeners on the plus and minus btns in the quickstart section
+decrementSets.addEventListener("click", minusOneSet);
+incrementSets.addEventListener("click", plusOneSet);
 
 //submit event listener on theForm
 form.addEventListener("submit", quickStart)
@@ -191,6 +199,14 @@ function restoreQuickstartSection () {
 
     //hide the restore btn
     restoreQuickstartButton.classList.add("hidden");
+}
+
+function minusOneSet () {
+    sets.value--;
+}
+
+function plusOneSet () {
+    sets.value++;
 }
 
 function quickSave () {
