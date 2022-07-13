@@ -221,7 +221,8 @@ function insertNewSavedPreset (presetNameToSave, setsToSave, workMinsToSave, wor
     - this many mins of rest: ${restMinsToSave}
     - this many secs of rest: ${restSecsToSave}`);
 
-    //because the user might pass in values with a leading 0 (eg 05 mins and 03 secs instead of just 5mins3secs), I need to transform the args 
+    //because the user might pass in values with a leading 0 (eg 0005 mins and 003 secs instead of just 5mins3secs), I need to transform the args
+    //parseInt removes the leading zeros
     let transformedSets = parseInt(setsToSave, 10);
     let transformedworkMins = parseInt(workMinsToSave, 10);
     let transformedworkSecs = parseInt(workSecsToSave, 10);
@@ -236,6 +237,17 @@ function insertNewSavedPreset (presetNameToSave, setsToSave, workMinsToSave, wor
     //now convert that into mins and secs using the remainder/modulus
     let totalTimeSecsRemainder = totalTimeInSeconds % 60;
     let totalTimeMinsQuotient = (totalTimeInSeconds - totalTimeSecsRemainder) / 60;
+
+    //but I still need to add a single zero when the mins or secs < 10 eg I dont want to write 5:5 into the html instaed of 05:05
+    if(transformedworkMins < 10) {transformedworkMins = `0`.concat(transformedworkMins);}
+    if(transformedworkSecs < 10) {transformedworkSecs = `0`.concat(transformedworkSecs);}
+
+    if(transformedrestMins < 10) {transformedrestMins = `0`.concat(transformedrestMins);}
+    if(transformedrestSecs < 10) {transformedrestSecs = `0`.concat(transformedrestSecs);}
+
+    if(totalTimeSecsRemainder < 10) {totalTimeSecsRemainder = `0`.concat(totalTimeSecsRemainder);}
+    if(totalTimeMinsQuotient < 10) {totalTimeMinsQuotient = `0`.concat(totalTimeMinsQuotient);}
+    
 
     //now the template html, customisable using backtics and interpolation
     let htmlToInsert = `<div id="${presetNameToSave}SavedPreset" class="stack-md white-background">
