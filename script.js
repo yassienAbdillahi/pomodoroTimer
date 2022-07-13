@@ -223,11 +223,11 @@ function plusOneSet () {
 
 function minusOneFromWorkPeriod () {
 
-    //if seconds > 0 minus one from the seconds, else minus one from the mins (and then reset the secs to 0)
+    //if seconds > 0 minus one from the seconds, else minus one from the mins (and then reset the secs to 59)
     if(workSecondsInput.value > 0) {workSecondsInput.value--;}
     else{
         workMinsInput.value--;
-        workSecondsInput.value = "00";
+        workSecondsInput.value = "59";
     }
 
 }
@@ -248,11 +248,11 @@ function plusOneToWorkPeriod () {
 
 function minusOneFromRestPeriod () {
 
-    //if seconds > 0 minus one from the seconds, else minus one from the mins (and then reset the secs to 0)
+    //if seconds > 0 minus one from the seconds, else minus one from the mins (and then reset the secs to 59)
     if(restSecondsInput.value > 0) {restSecondsInput.value--;}
     else{
         restMinsInput.value--;
-        restSecondsInput.value = "00";
+        restSecondsInput.value = "59";
     }
 
 }
