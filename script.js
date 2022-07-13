@@ -122,6 +122,29 @@ cancelSaveBtn.addEventListener("click", refreshPage)
 //submit event listener on theForm2
 form2.addEventListener("submit", handleSave);
 
+//load event listener on the page
+window.addEventListener("load", getAndDisplayExistingPresets);
+
+//=============================================================================
+//                          Onload fns
+//=============================================================================
+
+//when the page first loads, get all the previously saved presets and show them
+function getAndDisplayExistingPresets () {
+
+    console.log(`There are ${localStorage.length} two existing presets in local storage to show`);
+
+    /*local storage is an object so to get the items within it without knowing their 
+    keys in advance (since the user is the one who names each preset), use Object.keys
+    which returns an array of all the keys (in this case all the preset names the user saved)*/
+    console.log(
+        Object.keys(localStorage)
+    );
+
+}
+
+
+
 //=============================================================================
 //                          Quickstart section fns
 //=============================================================================
@@ -208,6 +231,13 @@ function handleSave (event) {
 }
 
 function savePresetToLocalStorage (presetNameToSave, setsToSave, workMinsToSave, workSecsToSave, restMinsToSave, restSecsToSave) {
+
+    let whatToSave = `${setsToSave}, ${workMinsToSave}, ${workSecsToSave}, ${restMinsToSave}, ${restSecsToSave}`;
+    console.log(`This '${whatToSave}' is what will be in local storage under the name '${presetNameToSave}'`);
+
+    //now actually save it to local storage
+    localStorage.setItem(presetNameToSave, whatToSave);
+    
 
 }
 
@@ -684,4 +714,7 @@ function refreshPage () {
 //=============================================================================
 function advancedSettings () {
     console.log("add btn event listener working");
+
+    
+
 }
