@@ -132,14 +132,36 @@ window.addEventListener("load", getAndDisplayExistingPresets);
 //when the page first loads, get all the previously saved presets and show them
 function getAndDisplayExistingPresets () {
 
-    console.log(`There are ${localStorage.length} two existing presets in local storage to show`);
+    console.log(`There are ${localStorage.length} existing presets in local storage to show`);
 
     /*local storage is an object so to get the items within it without knowing their 
     keys in advance (since the user is the one who names each preset), use Object.keys
     which returns an array of all the keys (in this case all the preset names the user saved)*/
-    console.log(
-        Object.keys(localStorage)
-    );
+    let arrayOfSavedPresetNames = Object.keys(localStorage);
+    console.log(arrayOfSavedPresetNames);
+
+    arrayOfSavedPresetNames.forEach(
+
+        (arrayElement) => {
+
+            console.log(arrayElement);
+
+            let savedPresetString = localStorage.getItem(arrayElement);/*this is a string in the format:
+            numberOfSets, workMins, workSecs, restMins, restSecs*/
+            console.log(savedPresetString);
+
+            //to get each individual input I have to use split rather than slice because the inputs could have any possible no of characters
+            let newArrayPostSplit = savedPresetString.split(",");
+            console.log(newArrayPostSplit);
+
+            //now display the preset
+            insertNewSavedPreset(arrayElement, newArrayPostSplit[0], newArrayPostSplit[1], newArrayPostSplit[2], newArrayPostSplit[3], newArrayPostSplit[4]);
+
+        }
+
+
+    )
+
 
 }
 
