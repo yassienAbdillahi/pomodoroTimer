@@ -76,6 +76,7 @@ h3 {
 .plus-minus {
     font-size: 1.3rem;
     margin-right: 0.5rem;
+    cursor: pointer;
 }
 
 .colon {

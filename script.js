@@ -26,8 +26,11 @@ const restMinsInput = document.getElementById("restMinsInput");
 const restSecondsInput = document.getElementById("restSecondsInput");
 
 //the plus and minus buttons inside the quickstart section
-const decrementSets = document.getElementById("decrementSets");
-const incrementSets = document.getElementById("incrementSets");
+const decrementSetsBtn = document.getElementById("decrementSets");
+const incrementSetsBtn = document.getElementById("incrementSets");
+
+const decrementWorkPeriodBtn = document.getElementById("decrementWorkPeriod");
+const incrementWorkPeriodBtn = document.getElementById("incrementWorkPeriod");
 
 //the prepare screen
 const prepareScreen = document.getElementById("prepareScreen");
@@ -112,8 +115,11 @@ saveBtn.addEventListener("click", quickSave);
 addBtn.addEventListener("click", advancedSettings);
 
 //click event listeners on the plus and minus btns in the quickstart section
-decrementSets.addEventListener("click", minusOneSet);
-incrementSets.addEventListener("click", plusOneSet);
+decrementSetsBtn.addEventListener("click", minusOneSet);
+incrementSetsBtn.addEventListener("click", plusOneSet);
+
+decrementWorkPeriodBtn.addEventListener("click", minusOneFromWorkPeriod);
+incrementWorkPeriodBtn.addEventListener("click", plusOneToWorkPeriod);
 
 //submit event listener on theForm
 form.addEventListener("submit", quickStart)
@@ -207,6 +213,26 @@ function minusOneSet () {
 
 function plusOneSet () {
     sets.value++;
+}
+
+function minusOneFromWorkPeriod () {
+    //if seconds > 0 minus one from the seconds, else minus one from the mins (and then reset the secs to 0)
+    if(workSecondsInput.value > 0) {workSecondsInput.value--;}
+    else{
+        workMinsInput.value--;
+        workSecondsInput.value = "00";
+    }
+
+}
+
+function plusOneToWorkPeriod () {
+    //if seconds < 59, add one to the seconds, else add one to the mins (and then reset the secs to 0)
+    if(workSecondsInput.value < 59) {workSecondsInput.value++;}
+    else{
+        workMinsInput.value++;
+        workSecondsInput.value = "00";
+    }
+
 }
 
 function quickSave () {
