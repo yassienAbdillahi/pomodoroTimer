@@ -32,6 +32,9 @@ const incrementSetsBtn = document.getElementById("incrementSets");
 const decrementWorkPeriodBtn = document.getElementById("decrementWorkPeriod");
 const incrementWorkPeriodBtn = document.getElementById("incrementWorkPeriod");
 
+const decrementRestPeriodBtn = document.getElementById("decrementRestPeriod");
+const incrementRestPeriodBtn = document.getElementById("incrementRestPeriod");
+
 //the prepare screen
 const prepareScreen = document.getElementById("prepareScreen");
 
@@ -120,6 +123,9 @@ incrementSetsBtn.addEventListener("click", plusOneSet);
 
 decrementWorkPeriodBtn.addEventListener("click", minusOneFromWorkPeriod);
 incrementWorkPeriodBtn.addEventListener("click", plusOneToWorkPeriod);
+
+decrementRestPeriodBtn.addEventListener("click", minusOneFromRestPeriod);
+incrementRestPeriodBtn.addEventListener("click", plusOneToRestPeriod);
 
 //submit event listener on theForm
 form.addEventListener("submit", quickStart)
@@ -216,6 +222,7 @@ function plusOneSet () {
 }
 
 function minusOneFromWorkPeriod () {
+
     //if seconds > 0 minus one from the seconds, else minus one from the mins (and then reset the secs to 0)
     if(workSecondsInput.value > 0) {workSecondsInput.value--;}
     else{
@@ -226,6 +233,7 @@ function minusOneFromWorkPeriod () {
 }
 
 function plusOneToWorkPeriod () {
+
     //if seconds < 59, add one to the seconds, else add one to the mins (and then reset the secs to 0)
     if(workSecondsInput.value < 59) {workSecondsInput.value++;}
     else{
@@ -234,6 +242,35 @@ function plusOneToWorkPeriod () {
     }
 
 }
+
+
+
+
+function minusOneFromRestPeriod () {
+
+    //if seconds > 0 minus one from the seconds, else minus one from the mins (and then reset the secs to 0)
+    if(restSecondsInput.value > 0) {restSecondsInput.value--;}
+    else{
+        restMinsInput.value--;
+        restSecondsInput.value = "00";
+    }
+
+}
+
+function plusOneToRestPeriod () {
+
+    //if seconds < 59, add one to the seconds, else add one to the mins (and then reset the secs to 0)
+    if(restSecondsInput.value < 59) {restSecondsInput.value++;}
+    else{
+        restMinsInput.value++;
+        restSecondsInput.value = "00";
+    }
+
+}
+
+
+
+
 
 function quickSave () {
     console.log("save btn event listener working");
