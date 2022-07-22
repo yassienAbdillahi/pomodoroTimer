@@ -38,6 +38,12 @@ const incrementRestPeriodBtn = document.getElementById("incrementRestPeriod");
 //the prepare screen
 const prepareScreen = document.getElementById("prepareScreen");
 
+//the prepare screen h2
+const prepH2 = document.getElementById("prepareH2");
+
+//the prepare screen audio
+const prepBeep = document.getElementById("prepareBeepAudio");
+
 //the prepare screen spans
 const prepMins = document.getElementById("prepMins");
 const prepSecs = document.getElementById("prepSecs");
@@ -48,6 +54,9 @@ const pausePrepareScreenBtn = document.getElementById("pausePrepareScreen");
 
 //the work screen
 const workScreen = document.getElementById("workScreen");
+
+//the work screen audio
+const workBeep = document.getElementById("workBeepAudio");
 
 //the work screen spans
 const workSets = document.getElementById("workSets");
@@ -60,6 +69,9 @@ const pauseWorkScreenBtn = document.getElementById("pauseWorkScreen");
 
 //the rest screen
 const restScreen = document.getElementById("restScreen");
+
+//the rest screen audio
+const restBeep = document.getElementById("restBeepAudio");
 
 //the rest screen spans
 const restSets = document.getElementById("restSets");
@@ -518,6 +530,9 @@ function startPrepareScreenCountDown (mins, secs) {
            console.log(`Time has reached ${new Date()}, prep countdown is finished`);
            writeIntoPrepareScreen(0, 0);
 
+           //play the audio
+           prepBeep.play();
+
            //now replace prep screen with the work screen
            getAndShowWorkScreen();
 
@@ -641,6 +656,9 @@ function startWorkScreenCountdown (sets, mins, secs) {
         else {//what to do at the end of the timer
             console.log(`Time has reached ${new Date()}, work countdown is finished`);
             writeIntoWorkScreen(sets, 0, 0);
+
+            //play the audio
+            workBeep.play();
  
             //clear the setInterval
             clearInterval(x);
@@ -787,6 +805,9 @@ function startRestScreenCountdown (sets, mins, secs) {
         else {//what to do at the end of the timer
             console.log(`Time has reached ${new Date()}, rest countdown is finished`);
             writeIntoRestScreen(sets, 0, 0);
+
+            //play the audio
+            restBeep.play();
             
             //clear the setInterval
             clearInterval(x);
@@ -831,13 +852,20 @@ function refreshPage () {
     location.reload();
 }
 
+function insertAudio (elementToAddAudioBefore) {
+    const htmlWithAudio = `<audio id="beepAudioElement" controls autoplay>
+    <source src="beep-01a.wav" type="audio/wav">
+    <source src="beep-01a.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+  </audio>`;
+
+  elementToAddAudioBefore.insertAdjacentHTML("beforebegin", htmlWithAudio);
+}
 
 //=============================================================================
 //                           Presets section fns
 //=============================================================================
 function advancedSettings () {
     console.log("add btn event listener working");
-
-    
 
 }
