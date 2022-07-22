@@ -534,10 +534,7 @@ function exitPrepareScreen () {
 }
 
 function getAndShowWorkScreen () {
-    //hide the prepare and rest screens then show the work screen
-    prepareScreen.classList.add("hidden");
-    restScreen.classList.add("hidden");
-    workScreen.classList.remove("hidden");
+    
 
     //get number of sets, and amount of mins+secs of work time input by user
     let setsValue = parseFloat(sets.value);
@@ -602,6 +599,11 @@ function startWorkScreenCountdown (sets, mins, secs) {
 
 
     const x = setInterval( () => {//i.e every second, do the following
+
+        //hide the prepare and rest screens then show the work screen 
+        prepareScreen.classList.add("hidden");
+        restScreen.classList.add("hidden");
+        workScreen.classList.remove("hidden");
       
         //while the currentTime < timeCountdownEnds, keep changing the relevant innerHTML
         let currentTimeInMs = new Date().getTime();
@@ -655,9 +657,7 @@ function getAndShowWRestScreen() {
 
     console.log(`show rest screen now`);
 
-    //hide the work screen and show the rest screen
-    workScreen.classList.add("hidden");
-    restScreen.classList.remove("hidden");
+    
 
     //get number of sets, and amount of mins+secs of work time input by user
     let setsValue = parseFloat(sets.value);
@@ -726,6 +726,10 @@ function startRestScreenCountdown (sets, mins, secs) {
     
     
     const x = setInterval( () => {//i.e every second, do the following
+
+        //hide the work screen and show the rest screen
+        workScreen.classList.add("hidden");
+        restScreen.classList.remove("hidden");
   
     
         //while the currentTime < timeCountdownEnds, keep changing the relevant innerHTML
