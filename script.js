@@ -642,8 +642,23 @@ function startWorkScreenCountdown (sets, mins, secs) {
             //clear the setInterval
             clearInterval(x);
 
-            //now replace work screen with the rest screen
-            getAndShowWRestScreen();
+            //if this is the last set, go straight to the finished screen otherwise go to the rest screen
+            if (sets == 1)  {
+                //hide the prepare, work and rest screens
+                prepareScreen.classList.add("hidden");
+                restScreen.classList.add("hidden");
+                workScreen.classList.add("hidden");
+                
+                //show the finished screen
+                alert(`finished`);
+                finishedScreen.classList.remove("hidden");
+            }
+            else {
+                //now replace work screen with the rest screen
+                getAndShowWRestScreen();
+            }
+
+            
         }
          
      }, 1000);
