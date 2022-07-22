@@ -44,6 +44,7 @@ const prepSecs = document.getElementById("prepSecs");
 
 //the prepare screen buttons
 const exitPrepareScreenBtn = document.getElementById("exitPrepareScreen");
+const pausePrepareScreenBtn = document.getElementById("pausePrepareScreen");
 
 //the work screen
 const workScreen = document.getElementById("workScreen");
@@ -55,6 +56,7 @@ const workSecs = document.getElementById("workSecs");
 
 //the work screen buttons
 const exitWorkScreenBtn = document.getElementById("exitWorkScreen");
+const pauseWorkScreenBtn = document.getElementById("pauseWorkScreen");
 
 //the rest screen
 const restScreen = document.getElementById("restScreen");
@@ -66,6 +68,7 @@ const restSecs = document.getElementById("restSecs");
 
 //the rest screen buttons
 const exitRestScreenBtn = document.getElementById("exitRestScreen");
+const pauseRestScreenBtn = document.getElementById("pauseRestScreen");
 
 //the finishedScreen
 const finishedScreen = document.getElementById("finishedScreen");
