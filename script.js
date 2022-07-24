@@ -85,6 +85,9 @@ const pauseRestScreenBtn = document.getElementById("pauseRestScreen");
 //the finishedScreen
 const finishedScreen = document.getElementById("finishedScreen");
 
+//the finished screen audio
+const finishedBeep = document.getElementById("finishedBeepAudio");
+
 //the finished screen span-buttons
 const restartSameBtn = document.getElementById("restartSame");
 const refreshPageBtn = document.getElementById("refreshPage");
@@ -657,8 +660,11 @@ function startWorkScreenCountdown (sets, mins, secs) {
             console.log(`Time has reached ${new Date()}, work countdown is finished`);
             writeIntoWorkScreen(sets, 0, 0);
 
-            //play the audio
-            workBeep.play();
+            //if this is not the final set, play the normal audio
+            if(sets != 1) {
+                workBeep.play();
+            }
+            
  
             //clear the setInterval
             clearInterval(x);
@@ -671,8 +677,11 @@ function startWorkScreenCountdown (sets, mins, secs) {
                 workScreen.classList.add("hidden");
                 
                 //show the finished screen
-                alert(`finished`);
+                //alert(`finished`);
                 finishedScreen.classList.remove("hidden");
+
+                //play the final beep
+                finishedBeep.play();
             }
             else {
                 //now replace work screen with the rest screen
