@@ -92,9 +92,6 @@ const finishedBeep = document.getElementById("finishedBeepAudio");
 const restartSameBtn = document.getElementById("restartSame");
 const refreshPageBtn = document.getElementById("refreshPage");
 
-//boolean to determine if prepare screen should be shown
-let isFirstSet = true;
-
 //the save preset screen (modal)
 const savePresetScreen = document.getElementById("savePresetModal");
 
@@ -153,6 +150,9 @@ exitPrepareScreenBtn.addEventListener("click", exitPrepareScreen)
 
 //click event listener on refresh the page btn
 refreshPageBtn.addEventListener("click", refreshPage)
+
+//click event listener on restart same btn
+restartSameBtn.addEventListener("click", restartPomodoro)
 
 //click event listener on the cancelSave btn
 cancelSaveBtn.addEventListener("click", refreshPage)
@@ -424,10 +424,6 @@ function insertNewSavedPreset (presetNameToSave, setsToSave, workMinsToSave, wor
     //now insert the html in the right position
     presetsParagraph.insertAdjacentHTML("afterend", htmlToInsert);
 
-    
-
-
-
 }
 
 
@@ -435,22 +431,18 @@ function quickStart (event) {
     event.preventDefault();
     console.log("start btn event listener working");
 
-    if(isFirstSet == true) {
-        //write into the prepare screen
-        writeIntoPrepareScreen(0, 5);
-        
-        //display the preparescreen
-        prepareScreen.classList.remove("hidden");
-        
-        //start the 5-second countdown
-        startPrepareScreenCountDown(0, 5);
-    }
+    //first write into the redo spans, used for the restart btn on the finished screen later
+    writeIntoRedoSpans();
 
-    else{
-        //replace rest screen with the work screen
-        getAndShowWorkScreen();
-    }
-
+    //write into the prepare screen
+    writeIntoPrepareScreen(0, 5);
+    
+    //display the preparescreen
+    prepareScreen.classList.remove("hidden");
+        
+    //start the 5-second countdown
+    startPrepareScreenCountDown(0, 5);
+    
 }
 
 function writeIntoPrepareScreen (mins, secs) {
@@ -677,7 +669,6 @@ function startWorkScreenCountdown (sets, mins, secs) {
                 workScreen.classList.add("hidden");
                 
                 //show the finished screen
-                //alert(`finished`);
                 finishedScreen.classList.remove("hidden");
 
                 //play the final beep
@@ -827,28 +818,9 @@ function startRestScreenCountdown (sets, mins, secs) {
             let userSets =document.querySelector("input[type='number']")
             userSets.value = sets - 1;
 
-
-            //if condition to handle case where sets reaches 0 (i.e at the end of the final rest countdown)
-            if(userSets.value == 0) {
-                //hide the prepare, work and rest screens
-                prepareScreen.classList.add("hidden");
-                restScreen.classList.add("hidden");
-                workScreen.classList.add("hidden");
+            //now replace rest screen with the work screen
+            getAndShowWorkScreen();
                 
-                //show the finished screen
-                alert(`finished`);
-                finishedScreen.classList.remove("hidden");
-            }
-
-            else {
-                //now change the isFirstSet boolean
-                isFirstSet = false;
-                
-                //now submit theForm again
-                startBtn.click();
-            }
-            
-            
         }
     
     }, 1000);
@@ -869,6 +841,40 @@ function insertAudio (elementToAddAudioBefore) {
   </audio>`;
 
   elementToAddAudioBefore.insertAdjacentHTML("beforebegin", htmlWithAudio);
+}
+
+function writeIntoRedoSpans() {
+
+    //basically just copy the values the user originally entered when submitting in theForm and paste them into the redo spans
+    let redoSets = document.getElementById("redoSets");
+    let redoWorkMins = document.getElementById("redoWorkMins");
+    let redoWorkSeconds = document.getElementById("redoWorkSeconds");
+    let redoRestMins = document.getElementById("redoRestMins");
+    let redoRestSeconds = document.getElementById("redoRestSeconds");
+
+    redoSets.innerHTML = sets.value;
+    redoWorkMins.innerHTML = workMinsInput.value;
+    redoWorkSeconds.innerHTML = workSecondsInput.value;
+    redoRestMins.innerHTML = restMinsInput.value;
+    redoRestSeconds.innerHTML = restSecondsInput.value;
+
+}
+
+function restartPomodoro () {
+
+    //write into the form using the values in the redo spans
+    sets.value = document.getElementById("redoSets").innerHTML;
+    workMinsInput.value = document.getElementById("redoWorkMins").innerHTML;
+    workSecondsInput.value = document.getElementById("redoWorkSeconds").innerHTML;
+    restMinsInput.value = document.getElementById("redoRestMins").innerHTML;
+    restSecondsInput.value = document.getElementById("redoRestSeconds").innerHTML;
+
+    //submit the form
+    startBtn.click();
+
+    //hide the finished screen again
+    finishedScreen.classList.add("hidden");
+        
 }
 
 //=============================================================================
