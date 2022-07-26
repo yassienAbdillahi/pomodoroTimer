@@ -843,10 +843,6 @@ function insertAudio (elementToAddAudioBefore) {
   elementToAddAudioBefore.insertAdjacentHTML("beforebegin", htmlWithAudio);
 }
 
-function copySetsToOgSetsSpan () {
-
-}
-
 function writeIntoRedoSpans() {
 
     //basically just copy the values the user originally entered when submitting in theForm and paste them into the redo spans
