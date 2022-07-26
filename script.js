@@ -52,6 +52,9 @@ const prepSecs = document.getElementById("prepSecs");
 const exitPrepareScreenBtn = document.getElementById("exitPrepareScreen");
 const pausePrepareScreenBtn = document.getElementById("pausePrepareScreen");
 
+//boolean for pause/play prepare screen
+let prepScreenIsPaused = false;
+
 //the work screen
 const workScreen = document.getElementById("workScreen");
 
@@ -67,6 +70,9 @@ const workSecs = document.getElementById("workSecs");
 const exitWorkScreenBtn = document.getElementById("exitWorkScreen");
 const pauseWorkScreenBtn = document.getElementById("pauseWorkScreen");
 
+//boolean for pause/play work screen
+let workScreenIsPaused = false;
+
 //the rest screen
 const restScreen = document.getElementById("restScreen");
 
@@ -81,6 +87,9 @@ const restSecs = document.getElementById("restSecs");
 //the rest screen buttons
 const exitRestScreenBtn = document.getElementById("exitRestScreen");
 const pauseRestScreenBtn = document.getElementById("pauseRestScreen");
+
+//boolean for pause/play prepare screen
+let restScreenIsPaused = false;
 
 //the finishedScreen
 const finishedScreen = document.getElementById("finishedScreen");
@@ -149,6 +158,11 @@ form.addEventListener("submit", quickStart);
 exitPrepareScreenBtn.addEventListener("click", exitCurrentScreenAndReload);
 exitWorkScreenBtn.addEventListener("click", exitCurrentScreenAndReload);
 exitRestScreenBtn.addEventListener("click", exitCurrentScreenAndReload);
+
+//click event listener on the pause prep, work and rest screen btns
+pausePrepareScreenBtn.addEventListener("click", pausePrepareScreenCountdown);
+pauseWorkScreenBtn.addEventListener("click", pauseWorkScreenCountdown);
+pauseRestScreenBtn.addEventListener("click", pauseRestScreenCountdown);
 
 //click event listener on refresh the page btn
 refreshPageBtn.addEventListener("click", refreshPage);
@@ -491,7 +505,14 @@ function startPrepareScreenCountDown (mins, secs) {
     const timePrepCountdownEnds = new Date(newMs);
     console.log(`prep countdown finishes ${timePrepCountdownEnds}`);
 
+    
+
     const x = setInterval( () => {//i.e every second, do the following
+
+        //if the pause btn has been clicked, clear the interval
+        if (prepScreenIsPaused == true) {
+            clearInterval(x);
+        }
       
        //while the currentTime < timeCountdownEnds, keep changing the relevant innerHTML
        let currentTimeInMs = new Date().getTime();
@@ -541,6 +562,14 @@ function startPrepareScreenCountDown (mins, secs) {
 
     
 
+}
+
+function pausePrepareScreenCountdown () {
+    console.log(`prep countdown pause btn has been clicked`);
+
+    //pause the prep screen by changing the corresponding global variable boolean which the prep countdown checks
+    prepScreenIsPaused = true;
+    
 }
 
 function exitCurrentScreenAndReload () {
@@ -614,6 +643,11 @@ function startWorkScreenCountdown (sets, mins, secs) {
 
 
     const x = setInterval( () => {//i.e every second, do the following
+
+        //if the pause btn has been clicked, clear the interval
+        if (workScreenIsPaused == true) {
+            clearInterval(x);
+        }
 
         //hide the prepare and rest screens then show the work screen 
         prepareScreen.classList.add("hidden");
@@ -691,6 +725,14 @@ function startWorkScreenCountdown (sets, mins, secs) {
 
 }
 
+function pauseWorkScreenCountdown () {
+    console.log(`work countdown pause btn has been clicked`);
+
+    //pause the prep screen by changing the corresponding global variable boolean which the prep countdown checks
+    workScreenIsPaused = true;
+    
+}
+
 function getAndShowWRestScreen() {
 
     console.log(`show rest screen now`);
@@ -741,6 +783,11 @@ function writeIntoRestScreen (sets, mins, secs) {
 
 
 function startRestScreenCountdown (sets, mins, secs) {
+
+    //if the pause btn has been clicked, clear the interval
+    if (restScreenIsPaused == true) {
+        clearInterval(x);
+    }
     
     //first get the rest countdown length
     let lengthOfRestCountdownInMs = ( (mins * 60) + secs ) * 1000;
@@ -764,6 +811,11 @@ function startRestScreenCountdown (sets, mins, secs) {
     
     
     const x = setInterval( () => {//i.e every second, do the following
+
+        //if the pause btn has been clicked, clear the interval
+        if (restScreenIsPaused == true) {
+            clearInterval(x);
+        }
 
         //hide the work screen and show the rest screen
         workScreen.classList.add("hidden");
@@ -830,6 +882,13 @@ function startRestScreenCountdown (sets, mins, secs) {
 
 }
 
+function pauseRestScreenCountdown () {
+    console.log(`rest countdown pause btn has been clicked`);
+
+    //pause the prep screen by changing the corresponding global variable boolean which the prep countdown checks
+    restScreenIsPaused = true;
+    
+}
 
 function refreshPage () {
     location.reload();
