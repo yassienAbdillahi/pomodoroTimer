@@ -143,19 +143,21 @@ decrementRestPeriodBtn.addEventListener("click", minusOneFromRestPeriod);
 incrementRestPeriodBtn.addEventListener("click", plusOneToRestPeriod);
 
 //submit event listener on theForm
-form.addEventListener("submit", quickStart)
+form.addEventListener("submit", quickStart);
 
-//click event listener on exit prep screen btn
-exitPrepareScreenBtn.addEventListener("click", exitPrepareScreen)
+//click event listener on the exit prep, work and rest screen btns
+exitPrepareScreenBtn.addEventListener("click", exitCurrentScreenAndReload);
+exitWorkScreenBtn.addEventListener("click", exitCurrentScreenAndReload);
+exitRestScreenBtn.addEventListener("click", exitCurrentScreenAndReload);
 
 //click event listener on refresh the page btn
-refreshPageBtn.addEventListener("click", refreshPage)
+refreshPageBtn.addEventListener("click", refreshPage);
 
 //click event listener on restart same btn
-restartSameBtn.addEventListener("click", restartPomodoro)
+restartSameBtn.addEventListener("click", restartPomodoro);
 
 //click event listener on the cancelSave btn
-cancelSaveBtn.addEventListener("click", refreshPage)
+cancelSaveBtn.addEventListener("click", refreshPage);
 
 //submit event listener on theForm2
 form2.addEventListener("submit", handleSave);
@@ -541,7 +543,7 @@ function startPrepareScreenCountDown (mins, secs) {
 
 }
 
-function exitPrepareScreen () {
+function exitCurrentScreenAndReload () {
     //reload the page
     location.reload();
 }
