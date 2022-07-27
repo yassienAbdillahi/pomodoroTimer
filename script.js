@@ -437,9 +437,9 @@ function insertNewSavedPreset (presetNameToSave, setsToSave, workMinsToSave, wor
     
 
     <div class="row justify-space-evenly">
-        <button type="button" class="preset-edit-btn"><i class='fas fa-pen' style='margin-right:0.5rem'></i>Edit</button>
-        <button type="button" class="preset-delete-btn"><i class='fas fa-trash-alt' style='margin-right:0.5rem'></i>Delete</button>
-        <button type="button" class="preset-start-btn"><i class='fas fa-play' style='margin-right:0.5rem'></i>START</button>
+        <button id="${presetNameToSave}EditBtn" type="button" class="preset-edit-btn"><i class='fas fa-pen' style='margin-right:0.5rem'></i>Edit</button>
+        <button id="${presetNameToSave}DeleteBtn" type="button" class="preset-delete-btn"><i class='fas fa-trash-alt' style='margin-right:0.5rem'></i>Delete</button>
+        <button id="${presetNameToSave}StartBtn" type="button" class="preset-start-btn"><i class='fas fa-play' style='margin-right:0.5rem'></i>START</button>
     </div>
 
 </div>`;
@@ -447,6 +447,16 @@ function insertNewSavedPreset (presetNameToSave, setsToSave, workMinsToSave, wor
 
     //now insert the html in the right position
     presetsParagraph.insertAdjacentHTML("afterend", htmlToInsert);
+
+    /*now add event listeners to the edit, delete and start btns. Can't do it at the top of the js 
+    file like with the others because you can't add an event listener to something that doesn't exist yet*/
+    let editBtnId = `${presetNameToSave}EditBtn`;
+    let editBtnForThisPreset = document.getElementById(editBtnId);
+    editBtnForThisPreset.addEventListener("click", editThisPreset);
+
+    let deleteBtnId = `${presetNameToSave}DeleteBtn`;
+    let deleteBtnForThisPreset = document.getElementById(deleteBtnId);
+    deleteBtnForThisPreset.addEventListener("click", deleteThisPreset);
 
 }
 
@@ -1032,4 +1042,30 @@ function restartPomodoro () {
 function advancedSettings () {
     console.log("add btn event listener working");
 
+}
+
+function editThisPreset() {
+    console.log(`this preset's edit btn has been clicked`);
+
+    //first get the name of preset we need to edit
+    let b = this.id.length - 7;
+    let nameOfPresetToBeEdited = this.id.slice(0, b);
+    console.log(nameOfPresetToBeEdited);
+
+
+}
+
+function deleteThisPreset() {
+    console.log(`this preset's delete btn has been clicked`);
+
+    //first get the name of preset we need to delete
+    let b = this.id.length - 9;
+    let nameOfPresetToBeDeleted = this.id.slice(0, b);
+    console.log(nameOfPresetToBeDeleted);
+
+    //then delete it from local storage
+    localStorage.removeItem(nameOfPresetToBeDeleted);
+
+    //lastly, reload the page
+    location.reload();
 }
