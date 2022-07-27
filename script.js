@@ -51,6 +51,7 @@ const prepSecs = document.getElementById("prepSecs");
 //the prepare screen buttons
 const exitPrepareScreenBtn = document.getElementById("exitPrepareScreen");
 const pausePrepareScreenBtn = document.getElementById("pausePrepareScreen");
+const resumePrepareScreenBtn = document.getElementById("resumePrepareScreen");
 
 //boolean for pause/play prepare screen
 let prepScreenIsPaused = false;
@@ -69,6 +70,7 @@ const workSecs = document.getElementById("workSecs");
 //the work screen buttons
 const exitWorkScreenBtn = document.getElementById("exitWorkScreen");
 const pauseWorkScreenBtn = document.getElementById("pauseWorkScreen");
+const resumeWorkScreenBtn = document.getElementById("resumeWorkScreen");
 
 //boolean for pause/play work screen
 let workScreenIsPaused = false;
@@ -87,6 +89,7 @@ const restSecs = document.getElementById("restSecs");
 //the rest screen buttons
 const exitRestScreenBtn = document.getElementById("exitRestScreen");
 const pauseRestScreenBtn = document.getElementById("pauseRestScreen");
+const resumeRestScreenBtn = document.getElementById("resumeRestScreen");
 
 //boolean for pause/play prepare screen
 let restScreenIsPaused = false;
@@ -569,6 +572,12 @@ function pausePrepareScreenCountdown () {
 
     //pause the prep screen by changing the corresponding global variable boolean which the prep countdown checks
     prepScreenIsPaused = true;
+
+    //hide the pause button
+    pausePrepareScreenBtn.classList.add("hidden");
+
+    //show thw resume button
+    resumePrepareScreenBtn.classList.remove("hidden");
     
 }
 
@@ -730,6 +739,12 @@ function pauseWorkScreenCountdown () {
 
     //pause the prep screen by changing the corresponding global variable boolean which the prep countdown checks
     workScreenIsPaused = true;
+
+    //hide the pause button
+    pauseWorkScreenBtn.classList.add("hidden");
+
+    //show thw resume button
+    resumeWorkScreenBtn.classList.remove("hidden");
     
 }
 
@@ -887,6 +902,12 @@ function pauseRestScreenCountdown () {
 
     //pause the prep screen by changing the corresponding global variable boolean which the prep countdown checks
     restScreenIsPaused = true;
+
+    //hide the pause button
+    pauseRestScreenBtn.classList.add("hidden");
+
+    //show thw resume button
+    resumeRestScreenBtn.classList.remove("hidden");
     
 }
 
