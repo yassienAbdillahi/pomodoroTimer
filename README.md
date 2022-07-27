@@ -7,14 +7,14 @@ A productivity tool that times alternating periods of working and resting.
 
 As a user I'd like to be able to: 
 
-- [ ] set a custom-length “work” timer that counts down to zero
-- [ ] set a custom-length “break” timer that counts down to zero
-- [ ] click a button to start a session
-- [ ] see/hear something to let me know the first work timer is about to start
-- [ ] see/hear something to let me know the first work timer has started
-- [ ] see/hear something to let me know the first rest timer has started
-- [ ] see what set I am currently on
-- [ ] click a button to pause the timer
-- [ ] click a button to cancel the session and restart
-- [ ] save custom "work" and "break" lengths 
-- [ ] hear an alarm sound when the time is up
+- [x] set a custom-length “work” timer that counts down to zero
+- [x] set a custom-length “break” timer that counts down to zero
+- [x] click a button to start a session
+- [x] see/hear something to let me know the first work timer is about to start
+- [x] see/hear something to let me know the work timer has started
+- [x] see/hear something to let me know the rest timer has started
+- [x] see what set I am currently on
+- [x] click a button to pause the timer
+- [x] click a button to cancel the session and restart
+- [x] save custom "work" and "break" lengths 
+- [x] hear an alarm sound when the time is up
