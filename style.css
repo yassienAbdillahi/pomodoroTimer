@@ -100,7 +100,7 @@ h3 {
     font-size: 1.1rem;
 }
 
-.pause-btn {
+.pause-btn, .resume-btn {
     font-size: 3rem;
 }
 

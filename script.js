@@ -51,6 +51,7 @@ const prepSecs = document.getElementById("prepSecs");
 //the prepare screen buttons
 const exitPrepareScreenBtn = document.getElementById("exitPrepareScreen");
 const pausePrepareScreenBtn = document.getElementById("pausePrepareScreen");
+const resumePrepareScreenBtn = document.getElementById("resumePrepareScreen");
 
 //boolean for pause/play prepare screen
 let prepScreenIsPaused = false;
@@ -69,6 +70,7 @@ const workSecs = document.getElementById("workSecs");
 //the work screen buttons
 const exitWorkScreenBtn = document.getElementById("exitWorkScreen");
 const pauseWorkScreenBtn = document.getElementById("pauseWorkScreen");
+const resumeWorkScreenBtn = document.getElementById("resumeWorkScreen");
 
 //boolean for pause/play work screen
 let workScreenIsPaused = false;
@@ -87,6 +89,7 @@ const restSecs = document.getElementById("restSecs");
 //the rest screen buttons
 const exitRestScreenBtn = document.getElementById("exitRestScreen");
 const pauseRestScreenBtn = document.getElementById("pauseRestScreen");
+const resumeRestScreenBtn = document.getElementById("resumeRestScreen");
 
 //boolean for pause/play prepare screen
 let restScreenIsPaused = false;
@@ -159,10 +162,15 @@ exitPrepareScreenBtn.addEventListener("click", exitCurrentScreenAndReload);
 exitWorkScreenBtn.addEventListener("click", exitCurrentScreenAndReload);
 exitRestScreenBtn.addEventListener("click", exitCurrentScreenAndReload);
 
-//click event listener on the pause prep, work and rest screen btns
+//click event listeners on the pause prep, work and rest screen btns
 pausePrepareScreenBtn.addEventListener("click", pausePrepareScreenCountdown);
 pauseWorkScreenBtn.addEventListener("click", pauseWorkScreenCountdown);
 pauseRestScreenBtn.addEventListener("click", pauseRestScreenCountdown);
+
+//click event listeners on the resume prep, work and rest screen btns
+resumePrepareScreenBtn.addEventListener("click", resumePrepareScreenCountdown);
+resumeWorkScreenBtn.addEventListener("click", resumeWorkScreenCountdown);
+resumeRestScreenBtn.addEventListener("click", resumeRestScreenCountdown);
 
 //click event listener on refresh the page btn
 refreshPageBtn.addEventListener("click", refreshPage);
@@ -510,6 +518,7 @@ function startPrepareScreenCountDown (mins, secs) {
     const x = setInterval( () => {//i.e every second, do the following
 
         //if the pause btn has been clicked, clear the interval
+        
         if (prepScreenIsPaused == true) {
             clearInterval(x);
         }
@@ -569,7 +578,33 @@ function pausePrepareScreenCountdown () {
 
     //pause the prep screen by changing the corresponding global variable boolean which the prep countdown checks
     prepScreenIsPaused = true;
+
+    //hide the pause button
+    pausePrepareScreenBtn.classList.add("hidden");
+
+    //show thw resume button
+    resumePrepareScreenBtn.classList.remove("hidden");
     
+}
+
+function resumePrepareScreenCountdown () {
+    console.log(`prep countdown resume btn has been clicked`);
+
+    //first change the corresponding global variable boolean which the prep countdown checks back to false
+    prepScreenIsPaused = false;
+
+    //then get the current innerhtmml of the prep screen spans and call the startPrepareScreenCountDown fn with them as args
+    let remainingPrepMins = parseInt(prepMins.innerHTML ,10);
+    let remainingPrepSecs = parseInt(prepSecs.innerHTML ,10);
+
+    startPrepareScreenCountDown (remainingPrepMins, remainingPrepSecs);
+
+    //hide the resume button
+    resumePrepareScreenBtn.classList.add("hidden");
+
+    //show the pause button
+    pausePrepareScreenBtn.classList.remove("hidden");
+
 }
 
 function exitCurrentScreenAndReload () {
@@ -730,7 +765,33 @@ function pauseWorkScreenCountdown () {
 
     //pause the prep screen by changing the corresponding global variable boolean which the prep countdown checks
     workScreenIsPaused = true;
+
+    //hide the pause button
+    pauseWorkScreenBtn.classList.add("hidden");
+
+    //show thw resume button
+    resumeWorkScreenBtn.classList.remove("hidden");
     
+}
+
+function resumeWorkScreenCountdown () {
+    console.log(`work countdown resume btn has been clicked`);
+
+    //first change the corresponding global variable boolean which the prep countdown checks back to false
+    workScreenIsPaused = false;
+
+    //then get the current innerhtmml of the prep screen spans and call the startWorkScreenCountDown fn with them as args
+    let remainingSets = parseInt(workSets.innerHTML ,10);
+    let remainingWorkMins = parseInt(workMins.innerHTML ,10);
+    let remainingWorkSecs = parseInt(workSecs.innerHTML ,10);
+
+    startWorkScreenCountdown (remainingSets, remainingWorkMins, remainingWorkSecs);
+
+    //hide the resume button
+    resumeWorkScreenBtn.classList.add("hidden");
+
+    //show the pause button
+    pauseWorkScreenBtn.classList.remove("hidden");
 }
 
 function getAndShowWRestScreen() {
@@ -887,7 +948,34 @@ function pauseRestScreenCountdown () {
 
     //pause the prep screen by changing the corresponding global variable boolean which the prep countdown checks
     restScreenIsPaused = true;
+
+    //hide the pause button
+    pauseRestScreenBtn.classList.add("hidden");
+
+    //show thw resume button
+    resumeRestScreenBtn.classList.remove("hidden");
     
+}
+
+function resumeRestScreenCountdown () {
+    console.log(`rest countdown resume btn has been clicked`);
+
+    //first change the corresponding global variable boolean which the prep countdown checks back to false
+    restScreenIsPaused = false;
+
+    //then get the current innerhtmml of the prep screen spans and call the startWorkScreenCountDown fn with them as args
+    let remainingSets = parseInt(restSets.innerHTML ,10);
+    let remainingWorkMins = parseInt(restMins.innerHTML ,10);
+    let remainingWorkSecs = parseInt(restSecs.innerHTML ,10);
+
+    startRestScreenCountdown (remainingSets, remainingWorkMins, remainingWorkSecs);
+
+    //hide the resume button
+    resumeRestScreenBtn.classList.add("hidden");
+
+    //show the pause button
+    pauseRestScreenBtn.classList.remove("hidden");
+
 }
 
 function refreshPage () {
