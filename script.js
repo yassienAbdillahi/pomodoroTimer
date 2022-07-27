@@ -458,6 +458,10 @@ function insertNewSavedPreset (presetNameToSave, setsToSave, workMinsToSave, wor
     let deleteBtnForThisPreset = document.getElementById(deleteBtnId);
     deleteBtnForThisPreset.addEventListener("click", deleteThisPreset);
 
+    let startBtnId = `${presetNameToSave}StartBtn`;
+    let startBtnForThisPreset = document.getElementById(startBtnId);
+    startBtnForThisPreset.addEventListener("click", startThisPreset);
+
 }
 
 
@@ -1042,6 +1046,12 @@ function restartPomodoro () {
 function advancedSettings () {
     console.log("add btn event listener working");
 
+    let c = localStorage.getItem("three thirty-three threes");
+    console.log(c);
+
+    let d = c.split(",");
+    console.log(d);
+
 }
 
 function editThisPreset() {
@@ -1068,4 +1078,28 @@ function deleteThisPreset() {
 
     //lastly, reload the page
     location.reload();
+}
+
+function startThisPreset() {
+    console.log(`this preset's start btn has been clicked`);
+
+    //first get the name of preset we need to start
+    let b = this.id.length - 8;
+    let nameOfPresetToBeStarted = this.id.slice(0, b);
+    console.log(nameOfPresetToBeStarted);
+
+    //then get it from localStorage
+    let thisPresetsSetsWorkAndRestValuesAsAString = localStorage.getItem(nameOfPresetToBeStarted);
+    let arrayOfThisPresetsSetsWorkAndRestValues = thisPresetsSetsWorkAndRestValuesAsAString.split(",");
+    console.log(arrayOfThisPresetsSetsWorkAndRestValues);
+
+    //then write into theForm using the above saved values
+    sets.value = parseInt(arrayOfThisPresetsSetsWorkAndRestValues[0], 10);
+    workMinsInput.value = parseInt(arrayOfThisPresetsSetsWorkAndRestValues[1], 10);
+    workSecondsInput.value = parseInt(arrayOfThisPresetsSetsWorkAndRestValues[2], 10);
+    restMinsInput.value = parseInt(arrayOfThisPresetsSetsWorkAndRestValues[3], 10);
+    restSecondsInput.value = parseInt(arrayOfThisPresetsSetsWorkAndRestValues[4], 10);
+
+    //and finally, submit the form
+    startBtn.click();
 }
