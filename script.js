@@ -132,6 +132,16 @@ const workSecondsInputEdit = document.getElementById("workSecondsInputEdit");
 const restMinsInputEdit = document.getElementById("restMinsInputEdit");
 const restSecondsInputEdit = document.getElementById("restSecondsInputEdit");
 
+//the plus and minus buttons inside the edit modal
+const decrementSetsBtnEdit = document.getElementById("decrementSetsEdit");
+const incrementSetsBtnEdit = document.getElementById("incrementSetsEdit");
+
+const decrementWorkPeriodBtnEdit = document.getElementById("decrementWorkPeriodEdit");
+const incrementWorkPeriodBtnEdit = document.getElementById("incrementWorkPeriodEdit");
+
+const decrementRestPeriodBtnEdit = document.getElementById("decrementRestPeriodEdit");
+const incrementRestPeriodBtnEdit = document.getElementById("incrementRestPeriodEdit");
+
 //the cancelEdit btn
 const cancelEditBtn = document.getElementById("cancelEdit");
 
@@ -213,6 +223,16 @@ cancelEditBtn.addEventListener("click", refreshPage);
 
 //submit event listener on theForm3
 form3.addEventListener("submit", handleEdit);
+
+//click event listeners on the plus and minus btns in the edit modal
+decrementSetsBtnEdit.addEventListener("click", minusOneSetEdit);
+incrementSetsBtnEdit.addEventListener("click", plusOneSetEdit);
+
+decrementWorkPeriodBtnEdit.addEventListener("click", minusOneFromWorkPeriodEdit);
+incrementWorkPeriodBtnEdit.addEventListener("click", plusOneToWorkPeriodEdit);
+
+decrementRestPeriodBtnEdit.addEventListener("click", minusOneFromRestPeriodEdit);
+incrementRestPeriodBtnEdit.addEventListener("click", plusOneToRestPeriodEdit);
 
 //load event listener on the page
 window.addEventListener("load", getAndDisplayExistingPresets);
@@ -1101,6 +1121,58 @@ function editThisPreset() {
 
     //then show the modal
     editPresetScreen.classList.remove("hidden");
+
+}
+
+function minusOneSetEdit () {
+    setsEdit.value--;
+}
+
+function plusOneSetEdit () {
+    setsEdit.value++;
+}
+
+function minusOneFromWorkPeriodEdit () {
+
+    //if seconds > 0 minus one from the seconds, else minus one from the mins (and then reset the secs to 59)
+    if(workSecondsInputEdit.value > 0) {workSecondsInputEdit.value--;}
+    else{
+        workMinsInputEdit.value--;
+        workSecondsInputEdit.value = "59";
+    }
+
+}
+
+function plusOneToWorkPeriodEdit () {
+
+    //if seconds < 59, add one to the seconds, else add one to the mins (and then reset the secs to 0)
+    if(workSecondsInputEdit.value < 59) {workSecondsInputEdit.value++;}
+    else{
+        workMinsInputEdit.value++;
+        workSecondsInputEdit.value = "00";
+    }
+
+}
+
+function minusOneFromRestPeriodEdit () {
+
+    //if seconds > 0 minus one from the seconds, else minus one from the mins (and then reset the secs to 59)
+    if(restSecondsInputEdit.value > 0) {restSecondsInputEdit.value--;}
+    else{
+        restMinsInputEdit.value--;
+        restSecondsInputEdit.value = "59";
+    }
+
+}
+
+function plusOneToRestPeriodEdit () {
+
+    //if seconds < 59, add one to the seconds, else add one to the mins (and then reset the secs to 0)
+    if(restSecondsInputEdit.value < 59) {restSecondsInputEdit.value++;}
+    else{
+        restMinsInputEdit.value++;
+        restSecondsInputEdit.value = "00";
+    }
 
 }
 
