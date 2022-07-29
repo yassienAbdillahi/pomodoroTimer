@@ -118,6 +118,29 @@ const submitSaveBtn = document.getElementById("submitSave");
 //the presetName Input
 const presetName = document.getElementById("presetName");
 
+//the edit preset modal
+const editPresetScreen = document.getElementById("editPresetModal");
+
+//theForm3
+const form3 = document.getElementById("theForm3");
+
+//the form3 inputs
+const allTheFormInputsEdit = document.querySelectorAll("#theForm3 input[type='number']");
+const setsEdit = document.getElementById("setsEdit");
+const workMinsInputEdit = document.getElementById("workMinsInputEdit");
+const workSecondsInputEdit = document.getElementById("workSecondsInputEdit");
+const restMinsInputEdit = document.getElementById("restMinsInputEdit");
+const restSecondsInputEdit = document.getElementById("restSecondsInputEdit");
+
+//the cancelEdit btn
+const cancelEditBtn = document.getElementById("cancelEdit");
+
+//the submitEdit btn
+const submitEditBtn = document.getElementById("submitEdit");
+
+//the presetName Input (in the edit modal)
+const presetNameEdit = document.getElementById("presetNameEdit");
+
 //the presets section
 const presets = document.getElementById("presets");
 
@@ -184,6 +207,12 @@ cancelSaveBtn.addEventListener("click", refreshPage);
 
 //submit event listener on theForm2
 form2.addEventListener("submit", handleSave);
+
+//click event listener on the cancelEdit btn
+cancelEditBtn.addEventListener("click", refreshPage);
+
+//submit event listener on theForm3
+form3.addEventListener("submit", handleEdit);
 
 //load event listener on the page
 window.addEventListener("load", getAndDisplayExistingPresets);
@@ -1057,6 +1086,42 @@ function editThisPreset() {
     
     console.log(`the edit btn of the preset under the name '${nameOfPresetToBeEdited}' has been clicked`);
 
+    //then write this name into the "presetAboutToBeEdited" span which the handleEdit fn will use
+    document.getElementById("presetAboutToBeEdited").innerHTML = nameOfPresetToBeEdited;
+
+    //then fill in form3 with the values from this particular preset as a starting point
+    document.getElementById("presetNameEdit").value = `${nameOfPresetToBeEdited}`;
+
+    let arrayFromLocalStorage = localStorage.getItem(`${nameOfPresetToBeEdited}`).split(",");
+    console.log(arrayFromLocalStorage);
+
+    for (let i = 0; i < allTheFormInputsEdit.length; i++) {
+        allTheFormInputsEdit[i].value = parseInt(arrayFromLocalStorage[i], 10);
+    }
+
+    //then show the modal
+    editPresetScreen.classList.remove("hidden");
+
+}
+
+function handleEdit(event) {
+    event.preventDefault();
+
+    console.log("about to edit");
+
+    //first delete the original entry both from local storage and from the html
+    let nameOfPresetToDeleteInThisEdit = document.getElementById("presetAboutToBeEdited").innerHTML;
+    console.log(`${nameOfPresetToDeleteInThisEdit}`);
+
+    localStorage.removeItem(nameOfPresetToDeleteInThisEdit);
+    document.getElementById(`${nameOfPresetToDeleteInThisEdit}SavedPreset`).remove(); 
+
+    //then add a new one with the current values
+    savePresetToLocalStorage (presetNameEdit.value, setsEdit.value, workMinsInputEdit.value, workSecondsInputEdit.value, restMinsInputEdit.value, restSecondsInputEdit.value);
+    insertNewSavedPreset (presetNameEdit.value, setsEdit.value, workMinsInputEdit.value, workSecondsInputEdit.value, restMinsInputEdit.value, restSecondsInputEdit.value);
+
+    //then reload the page
+    refreshPage();
 }
 
 function deleteThisPreset() {
