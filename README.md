@@ -2,6 +2,14 @@
 
 A productivity tool that times alternating periods of working and resting.
 
+## Technical requirements
+- [ ] Configure dev tooling
+  - [ ] Prettier formatting
+  - [ ] ESLint linting
+  - [ ] Live-reloading local dev server
+- [x] Publish code to GitHub
+- [x] Deploy app to GitHub Pages
+
 
 ## User stories 
 
