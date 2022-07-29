@@ -58,10 +58,10 @@
                             <legend class="sr-only">Length of work period</legend>
                             <span id="decrementWorkPeriod" class="plus-minus">&minus;</span>
                             <label for="workMinsInput" class="sr-only">Number of minutes in the work period</label>
-                            <input type="number" id="workMinsInput" name="sets" min="0" max="59" value="25" required>
+                            <input type="number" id="workMinsInput" name="workMinsInput" min="0" max="59" value="25" required>
                             <span class="colon">:</span>
                             <label for="workSecondsInput" class="sr-only">Number of seconds in the work period</label>
-                            <input type="number" id="workSecondsInput" name="sets" min="0" max="59" value="00" required>
+                            <input type="number" id="workSecondsInput" name="workSecondsInput" min="0" max="59" value="00" required>
                             <span id="incrementWorkPeriod" class="plus-minus">&plus;</span>
                         </fieldset>
                     </div>
@@ -72,10 +72,10 @@
                             <legend class="sr-only">Length of rest period</legend>
                             <span id="decrementRestPeriod" class="plus-minus">&minus;</span>
                             <label for="restMinsInput" class="sr-only">Number of minutes in the rest period</label>
-                            <input type="number" id="restMinsInput" name="sets" min="0" max="59" value="5">
+                            <input type="number" id="restMinsInput" name="restMinsInput" min="0" max="59" value="5">
                             <span class="colon">:</span>
                             <label for="restSecondsInput" class="sr-only">Number of seconds in the rest period</label>
-                            <input type="number" id="restSecondsInput" name="sets" min="0" max="59" value="00">
+                            <input type="number" id="restSecondsInput" name="restSecondsInput" min="0" max="59" value="00">
                             <span id="incrementRestPeriod" class="plus-minus">&plus;</span>
                         </fieldset>
                     </div>
@@ -227,6 +227,63 @@
                 </form>
                
             </section>
+
+            <!-- edit preset modal -->
+            <section id="editPresetModal" class="hidden edit-screen">
+              
+              <h2 class="sm-mgn-lft-and-rt">Edit Preset</h2>
+              <form id="theForm3" class="stack-md">
+
+                  <label for="presetNameEdit" class="sm-mgn-lft-and-rt">Preset Name:</label>
+                  <input type="text" id="presetNameEdit" placeholder="e.g. Five fives">
+
+                  <div class="column justify-center gap-sm">
+                    <label for="setsEdit"></label><h3>SETS</h3></label>
+                    <div>
+                        <span id="decrementSetsEdit" class="plus-minus">&minus;</span>
+                        <input type="number" id="setsEdit" name="setsEdit" min="1" max="999" value="3" required>
+                        <span id="incrementSetsEdit" class="plus-minus">&plus;</span>
+                    </div>
+                    
+                </div>
+
+                <div class="column justify-center">
+                    <h3>WORK</h3>
+                    <fieldset>
+                        <legend class="sr-only">Length of work period</legend>
+                        <span id="decrementWorkPeriodEdit" class="plus-minus">&minus;</span>
+                        <label for="workMinsInputEdit" class="sr-only">Number of minutes in the work period</label>
+                        <input type="number" id="workMinsInputEdit" name="workMinsInputEdit" min="0" max="59" value="25" required>
+                        <span class="colon">:</span>
+                        <label for="workSecondsInputEdit" class="sr-only">Number of seconds in the work period</label>
+                        <input type="number" id="workSecondsInputEdit" name="workSecondsInpuEdit" min="0" max="59" value="00" required>
+                        <span id="incrementWorkPeriodEdit" class="plus-minus">&plus;</span>
+                    </fieldset>
+                </div>
+
+                <div class="column justify-center">
+                    <h3>REST</h3>
+                    <fieldset>
+                        <legend class="sr-only">Length of rest period</legend>
+                        <span id="decrementRestPeriodEdit" class="plus-minus">&minus;</span>
+                        <label for="restMinsInputEdit" class="sr-only">Number of minutes in the rest period</label>
+                        <input type="number" id="restMinsInputEdit" name="restMinsInputEdit" min="0" max="59" value="5">
+                        <span class="colon">:</span>
+                        <label for="restSecondsInputEdit" class="sr-only">Number of seconds in the rest period</label>
+                        <input type="number" id="restSecondsInputEdit" name="restSecondsInputEdit" min="0" max="59" value="00">
+                        <span id="incrementRestPeriodEdit" class="plus-minus">&plus;</span>
+                    </fieldset>
+                </div>
+            </div>
+                 
+
+                  <div class="row flex-justify-end">
+                      <button type="button" id="cancelEdit" class="sm-mgn-lft-and-rt">CANCEL</button>
+                      <button type="submit" id="submitEdit" class="sm-mgn-lft-and-rt">SAVE</button>
+                  </div>
+              </form>
+             
+          </section>
 
             <!-- section (visible to sr only) just to hold the initial inputs from theForm so I can restart the timer using the redo btn -->
             <section id="redoBtnInputs" class="sr-only">

@@ -341,9 +341,6 @@ function quickSave () {
     //make theForm (and consequently the start and save buttons as well as the number inputs) unclickable while the presets screen is showing
     form.classList.add("unclickable");
 
-    //do the same for the add btn
-    addBtn.classList.add("unclickable");
-
 
 }
 
@@ -373,9 +370,6 @@ function handleSave (event) {
 
     //make theForm (and consequently the start and save buttons as well as the number inputs) clickable again
     form.classList.remove("unclickable");
-
-    //do the same for the add btn
-    addBtn.classList.remove("unclickable");
 
 
 }
@@ -1056,13 +1050,12 @@ function restartPomodoro () {
 //=============================================================================
 
 function editThisPreset() {
-    console.log(`this preset's edit btn has been clicked`);
-
+    
     //first get the name of preset we need to edit
     let b = this.id.length - 7;
     let nameOfPresetToBeEdited = this.id.slice(0, b);
-    console.log(nameOfPresetToBeEdited);
-
+    
+    console.log(`the edit btn of the preset under the name '${nameOfPresetToBeEdited}' has been clicked`);
 
 }
 
