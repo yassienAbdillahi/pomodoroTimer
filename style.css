@@ -122,7 +122,7 @@ h3 {
     font-size: 1rem;
 }
 
-#prepareCountdownText span {
+#prepareCountdownText span, #workCountdownText span, #restCountdownText span {
     margin-left: 0;
     margin-right: 0;
     font-size: 4rem;
@@ -140,8 +140,8 @@ h3 {
 }
 
 .sm-mgn-lft-and-rt {
-    margin-left: 0.5rem;
-    margin-right: 0.6rem;
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
 }
 
 .zero-top-margin {
@@ -154,9 +154,17 @@ h3 {
 
 
 .container-just-to-center {
+    height: 80vh;
+    position: relative;
+}
+
+.centred {
+    margin: 0;
     position: absolute;
-    top: 30vh;
-    left: 30vw;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .big-text {
@@ -188,11 +196,6 @@ h3 {
     background-color: rgb(10, 230, 10); 
 }
 
-#workCountdownText span {
-    margin-left: 0;
-    margin-right: 0;
-    font-size: 4rem;
-}
 
 .rest-screen {
     position: fixed; /* Stay in place */
@@ -203,12 +206,6 @@ h3 {
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(10, 230, 190); 
-}
-
-#restCountdownText span {
-    margin-left: 0;
-    margin-right: 0;
-    font-size: 4rem;
 }
 
 .finished-screen {
@@ -282,4 +279,14 @@ h3 {
 
 audio {
     max-width: 12rem;
+}
+
+@media (max-width: 308px) {
+
+    #prepareCountdownText span, #workCountdownText span, #restCountdownText span {
+        margin-left: 0;
+        margin-right: 0;
+        font-size: 3rem;
+    }
+    
 }

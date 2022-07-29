@@ -18,8 +18,10 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body id="pageBody">
+      <div class="column justify-center">
+
         <header>
-            <h1 class="center">Be productive!</h1>
+            <h1>Be productive!</h1>
         </header>
 
         <main>
@@ -108,8 +110,9 @@
               </div>
 
               <div class="container-just-to-center">
+                <div class="centred">
 
-                <div class="column">
+                <div class="column justify-center">
                   <audio id="prepareBeepAudio" class="sr-only" controls>
                     <source src="beepSoundFiles/beep-01a.wav" type="audio/wav">
                     <source src="beepSoundFiles/beep-01a.mp3" type="audio/mpeg">
@@ -125,6 +128,7 @@
                   <span id="resumePrepareScreen" aria-label="Resume the prepare screen countdown" class="resume-btn hidden"><i class='fas fa-play-circle' style='color:blue'></i></span>
                 </div>
 
+                </div>
               </div>    
 
             </section>
@@ -136,6 +140,7 @@
                 </div>
   
                 <div class="container-just-to-center">
+                  <div class="centred">
   
                   <div class="column">
                     <audio id="workBeepAudio" class="sr-only" controls>
@@ -154,6 +159,8 @@
                     <span id="resumeWorkScreen" aria-label="Resume the work screen countdown" class="resume-btn hidden"><i class='fas fa-play-circle' style='color:blue'></i></span>
                   </div>
   
+
+                  </div>
                 </div>    
   
             </section>
@@ -165,6 +172,7 @@
                 </div>
   
                 <div class="container-just-to-center">
+                  <div class="centred">
   
                   <div class="column">
                     <audio id="restBeepAudio" class="sr-only" controls>
@@ -183,6 +191,7 @@
                     <span id="resumeRestScreen" aria-label="Resume the rest screen countdown" class="resume-btn hidden"><i class='fas fa-play-circle' style='color:blue'></i></span>
                   </div>
   
+                  </div>
                 </div>    
   
             </section>
@@ -193,6 +202,7 @@
             <section id="finishedScreen" class="hidden finished-screen">
   
                 <div class="container-just-to-center">
+                  <div class="centred">
   
                   <div class="column">
                     <audio id="finishedBeepAudio" class="sr-only" controls>
@@ -206,6 +216,7 @@
                     </div>
                   </div>
 
+                  </div>
                 </div>    
   
             </section>
@@ -243,9 +254,8 @@
                         <span id="decrementSetsEdit" class="plus-minus">&minus;</span>
                         <input type="number" id="setsEdit" name="setsEdit" min="1" max="999" value="3" required>
                         <span id="incrementSetsEdit" class="plus-minus">&plus;</span>
-                    </div>
-                    
-                </div>
+                    </div>    
+                  </div>
 
                 <div class="column justify-center">
                     <h3>WORK</h3>
@@ -274,7 +284,7 @@
                         <span id="incrementRestPeriodEdit" class="plus-minus">&plus;</span>
                     </fieldset>
                 </div>
-            </div>
+            
                  
 
                   <div class="row flex-justify-end">
@@ -282,8 +292,7 @@
                       <button type="submit" id="submitEdit" class="sm-mgn-lft-and-rt">SAVE</button>
                   </div>
               </form>
-             
-          </section>
+            </section>
 
             <!-- section (visible to sr only) just to hold the initial inputs from theForm so I can restart the timer using the redo btn -->
             <section id="redoBtnInputs" class="sr-only">
@@ -306,6 +315,7 @@
 
         </main>
 
+      </div>
 
 
         <!-- Link to script -->
