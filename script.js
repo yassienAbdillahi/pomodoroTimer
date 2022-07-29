@@ -12,7 +12,6 @@ const restoreQuickstartButton = document.getElementById("restoreQuickstartButton
 //the save, start and add btns
 const saveBtn = document.getElementById("save-btn");
 const startBtn = document.getElementById("start-btn");
-const addBtn = document.getElementById("add-btn");
 
 //the form inside quickstart section
 const form = document.getElementById("theForm");
@@ -143,9 +142,8 @@ const actualSavedPresets = document.getElementById("actualSavedPresets");
 minimseQuickstartButton.addEventListener("click", minimiseQuickstartSection);
 restoreQuickstartButton.addEventListener("click", restoreQuickstartSection);
 
-//click event listeners on the save and add btns
+//click event listeners on the save btn
 saveBtn.addEventListener("click", quickSave);
-addBtn.addEventListener("click", advancedSettings);
 
 //click event listeners on the plus and minus btns in the quickstart section
 decrementSetsBtn.addEventListener("click", minusOneSet);
@@ -1056,12 +1054,6 @@ function restartPomodoro () {
 //=============================================================================
 //                           Presets section fns
 //=============================================================================
-function advancedSettings () {
-    console.log("add btn event listener working");
-
-    
-
-}
 
 function editThisPreset() {
     console.log(`this preset's edit btn has been clicked`);
