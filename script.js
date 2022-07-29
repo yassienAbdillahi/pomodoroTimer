@@ -125,6 +125,9 @@ const presets = document.getElementById("presets");
 //the header div in the presets section (non-modal i.e once they've BEEN saved)
 const presetsHeaderContainer = document.getElementById("presetsHeaderContainer");
 
+//the presets section h2
+const presetsH2 = document.getElementById("presetsH2");
+
 //the instructions paragraph in the presets section
 const presetsParagraph = document.getElementById("presetsParagraph");
 
@@ -195,6 +198,12 @@ window.addEventListener("load", getAndDisplayExistingPresets);
 function getAndDisplayExistingPresets () {
 
     console.log(`There are ${localStorage.length} existing presets in local storage to show`);
+
+    //if there is at least one saved preset, change the innerHTML of the h2 from NO PRESETS YET to YOUR PRESETS
+    if (localStorage.length >= 1) {
+        presetsH2.innerHTML = "YOUR PRESETS";
+        presetsParagraph.innerHTML = "";
+    }
 
     /*local storage is an object so to get the items within it without knowing their 
     keys in advance (since the user is the one who names each preset), use Object.keys
@@ -447,6 +456,10 @@ function insertNewSavedPreset (presetNameToSave, setsToSave, workMinsToSave, wor
 
     //now insert the html in the right position
     presetsParagraph.insertAdjacentHTML("afterend", htmlToInsert);
+
+    //now rewrite the h2 and p in the saved presets section (in case this was the first one)
+    presetsH2.innerHTML = "YOUR PRESETS";
+    presetsParagraph.innerHTML = "";
 
     /*now add event listeners to the edit, delete and start btns. Can't do it at the top of the js 
     file like with the others because you can't add an event listener to something that doesn't exist yet*/
