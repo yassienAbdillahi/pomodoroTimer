@@ -1059,11 +1059,7 @@ function restartPomodoro () {
 function advancedSettings () {
     console.log("add btn event listener working");
 
-    let c = localStorage.getItem("three thirty-three threes");
-    console.log(c);
-
-    let d = c.split(",");
-    console.log(d);
+    
 
 }
 
