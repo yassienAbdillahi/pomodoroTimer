@@ -1,292 +1,295 @@
 .row {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .justify-space-between {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 .justify-space-evenly {
-    justify-content: space-evenly;
+  justify-content: space-evenly;
 }
 
 .column {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .justify-center {
-    justify-content: center;
+  justify-content: center;
 }
 
 .flex-justify-end {
-    justify-content: flex-end;
+  justify-content: flex-end;
 }
 
 .gap-sm {
-    gap: 0.15rem;
+  gap: 0.15rem;
 }
 
 .center {
-    max-width: 13rem;
-    margin: 0 auto;
+  max-width: 13rem;
+  margin: 0 auto;
 }
 
 .stack-md > * + * {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .stack-sm > * + * {
-    margin-top: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .sr-only {
-    position: absolute;
-    left: -10000px;
-    width: 1px;
-    height: 1px;
-    top: auto;
-    overflow: hidden;
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  top: auto;
+  overflow: hidden;
 }
 
 #theForm fieldset {
-    border: none;
+  border: none;
 }
 
-input[type='number'] {
-    border: none;
-    font-size: 1.3rem;
-    font-weight: 550;
+input[type="number"] {
+  border: none;
+  font-size: 1.3rem;
+  font-weight: 550;
 }
 
 h3 {
-    font-weight: lighter;
+  font-weight: lighter;
 }
 
 .plus-minus {
-    font-size: 1.3rem;
-    margin-right: 0.5rem;
-    cursor: pointer;
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
 }
 
 .colon {
-    font-size: 1.3rem;
-    margin-right: 0.5rem;
-    margin-left: 0;
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+  margin-left: 0;
 }
 
 #sets {
-    margin-left: 1.5rem;
+  margin-left: 1.5rem;
 }
 
 .start-btn {
-    background-color: navy;
-    color: white;
-    display: block;
-    border: none;
-    width: 100%;
-    padding: 0.5rem;
-    margin: 1rem 0;
-    font-size: 1.1rem;
+  background-color: navy;
+  color: white;
+  display: block;
+  border: none;
+  width: 100%;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  font-size: 1.1rem;
 }
 
-.pause-btn, .resume-btn {
-    font-size: 3rem;
+.pause-btn,
+.resume-btn {
+  font-size: 3rem;
 }
 
 .save-btn {
-    background: none;
-    border: none;
-    float: right;
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
+  background: none;
+  border: none;
+  float: right;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
 }
 
 .add-btn {
-    background: none;
-    width: 5rem;
-    border-radius: 20%/50%;
-    border-color: navy;
-    padding: 0.1rem 0.3rem;
-    color: navy;
-    font-size: 1rem;
+  background: none;
+  width: 5rem;
+  border-radius: 20%/50%;
+  border-color: navy;
+  padding: 0.1rem 0.3rem;
+  color: navy;
+  font-size: 1rem;
 }
 
-#prepareCountdownText span, #workCountdownText span, #restCountdownText span {
-    margin-left: 0;
-    margin-right: 0;
-    font-size: 4rem;
+#prepareCountdownText span,
+#workCountdownText span,
+#restCountdownText span {
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 4rem;
 }
 
 .prepare-screen {
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(255, 247, 0); 
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(255, 247, 0);
 }
 
 .sm-mgn-lft-and-rt {
-    margin-left: 0.8rem;
-    margin-right: 0.8rem;
+  margin-left: 0.8rem;
+  margin-right: 0.8rem;
 }
 
 .zero-top-margin {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .zero-bottom-margin {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
-
 .container-just-to-center {
-    height: 80vh;
-    position: relative;
+  height: 80vh;
+  position: relative;
 }
 
 .centred {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .big-text {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .medium-text {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .hold-to-exit {
-    background-color: cadetblue;
-    color: white;
-    width: 8rem;
-    border-radius: 20%/50%;
-    padding: 0.5rem 0.5rem;
-    font-size: 1.25rem;
-    margin-top: 1rem;
+  background-color: cadetblue;
+  color: white;
+  width: 8rem;
+  border-radius: 20%/50%;
+  padding: 0.5rem 0.5rem;
+  font-size: 1.25rem;
+  margin-top: 1rem;
 }
 
 .work-screen {
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(10, 230, 10); 
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(10, 230, 10);
 }
 
-
 .rest-screen {
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(10, 230, 190); 
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(10, 230, 190);
 }
 
 .finished-screen {
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(214, 39, 39); 
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(214, 39, 39);
 }
 
 .save-screen {
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 5%;
-    top: 33%;
-    width: 90%; /* Nearly full width */
-    height: 25%; /* A quarter of the page's height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: white; 
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 5%;
+  top: 33%;
+  width: 90%; /* Nearly full width */
+  height: 25%; /* A quarter of the page's height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: white;
 }
 
 .edit-screen {
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: white;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: white;
 }
 
 #theForm3 fieldset {
-    border: none;
+  border: none;
 }
 
 .grey-background {
-    background-color: gray;
+  background-color: gray;
 }
 
 .light-grey-background {
-    background-color: rgb(232, 226, 226);
+  background-color: rgb(232, 226, 226);
 }
 
 .white-background {
-    background-color: white;
+  background-color: white;
 }
 
 #theForm2 button {
-    background: none;
-    border: none;
-    font-size: 1rem;
+  background: none;
+  border: none;
+  font-size: 1rem;
 }
 
 .unclickable {
-    pointer-events: none;
+  pointer-events: none;
 }
 
-.preset-start-btn, .preset-edit-btn, .preset-delete-btn {
-    background: none;
-    border: none;
+.preset-start-btn,
+.preset-edit-btn,
+.preset-delete-btn {
+  background: none;
+  border: none;
 }
 
 .stop-scrolling {
-    height: 100%;
-    overflow: hidden;
+  height: 100%;
+  overflow: hidden;
 }
 
 audio {
-    max-width: 12rem;
+  max-width: 12rem;
 }
 
 @media (max-width: 308px) {
-
-    #prepareCountdownText span, #workCountdownText span, #restCountdownText span {
-        margin-left: 0;
-        margin-right: 0;
-        font-size: 3rem;
-    }
-    
+  #prepareCountdownText span,
+  #workCountdownText span,
+  #restCountdownText span {
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 3rem;
+  }
 }

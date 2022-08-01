@@ -1,0 +1,27 @@
+{
+  "name": "pomodorotimer",
+  "version": "1.0.0",
+  "description": "A productivity tool that times alternating periods of working and resting.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "makePretty": "prettier --write .",
+    "startServer": "browser-sync --server --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yassienAbdillahi/pomodoroTimer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yassienAbdillahi/pomodoroTimer/issues"
+  },
+  "homepage": "https://github.com/yassienAbdillahi/pomodoroTimer#readme",
+  "devDependencies": {
+    "browser-sync": "^2.27.10",
+    "eslint": "^8.21.0",
+    "prettier": "^2.7.1"
+  }
+}

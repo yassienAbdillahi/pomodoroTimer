@@ -3,6 +3,7 @@
 A productivity tool that times alternating periods of working and resting.
 
 ## Technical requirements
+
 - [ ] Configure dev tooling
   - [ ] Prettier formatting
   - [ ] ESLint linting
@@ -10,10 +11,9 @@ A productivity tool that times alternating periods of working and resting.
 - [x] Publish code to GitHub
 - [x] Deploy app to GitHub Pages
 
+## User stories
 
-## User stories 
-
-As a user I'd like to be able to: 
+As a user I'd like to be able to:
 
 - [x] set a custom-length “work” timer that counts down to zero
 - [x] set a custom-length “break” timer that counts down to zero
@@ -24,5 +24,5 @@ As a user I'd like to be able to:
 - [x] see what set I am currently on
 - [x] click a button to pause the timer
 - [x] click a button to cancel the session and restart
-- [x] save custom "work" and "break" lengths 
+- [x] save custom "work" and "break" lengths
 - [x] hear an alarm sound when the time is up
